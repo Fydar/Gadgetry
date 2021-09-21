@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31512.422
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gadgetry", "Gadgetry\Gadgetry.csproj", "{5755ED6F-074D-41CB-BDC0-1EF6378073C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gadetry.Demo", "Gadetry.Demo\Gadetry.Demo.csproj", "{869F8A43-5F93-4C81-B463-9619EF2F9A01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gadgetry.Demo", "Gadgetry.Demo\Gadgetry.Demo.csproj", "{869F8A43-5F93-4C81-B463-9619EF2F9A01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
