@@ -18,12 +18,12 @@ namespace Gadgetry.Tasks
 
 		async Task IGadgetRunFeature.RunAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken)
 		{
-			var awaitAll = new List<ValueTask>();
+			var awaitAll = new List<Task>();
 
 			foreach (var task in Tasks)
 			{
-				var valueTask = task.TaskCallback(gadgetRuntime, cancellationToken);
-				awaitAll.Add(valueTask);
+				var taskRunner = Task.Run(() => task.TaskCallback(gadgetRuntime, cancellationToken), cancellationToken);
+				awaitAll.Add(taskRunner);
 			}
 
 			foreach (var awaitTarget in awaitAll)

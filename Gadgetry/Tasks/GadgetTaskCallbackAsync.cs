@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Gadgetry.Tasks
 {
-	public delegate ValueTask GadgetTaskCallbackAsync(
+	public delegate Task GadgetTaskCallbackAsync(
 		GadgetRuntime gadgetRuntime,
 		CancellationToken cancellationToken = default);
 }

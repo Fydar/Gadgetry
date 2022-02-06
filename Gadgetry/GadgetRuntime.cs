@@ -59,7 +59,7 @@ namespace Gadgetry
 			return new GadgetRuntime(gadget, State);
 		}
 
-		public async ValueTask RunAsync(CancellationToken cancellationToken = default)
+		public async Task RunAsync(CancellationToken cancellationToken = default)
 		{
 			if (StartTime != null)
 			{
