@@ -1,4 +1,6 @@
-﻿namespace Gadgetry.Channels.Documentation;
+﻿using Gadgetry.Channels;
+
+namespace Gadgetry.Documentation;
 
 public class GadgetChannelDocumentationFeature : IGadgetChannelFeature
 {

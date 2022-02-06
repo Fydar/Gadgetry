@@ -20,7 +20,7 @@ public class GadgetRuntime<TOutput>
 
 	public GadgetRuntime ExtendWith(Gadget gadget)
 	{
-		return new GadgetRuntime(gadget, InnerGadgetRuntime.State);
+		return InnerGadgetRuntime.ExtendWith(gadget);
 	}
 
 	public async Task<TOutput> RunAsync(CancellationToken cancellationToken = default)
@@ -56,7 +56,7 @@ public class GadgetRuntime<TInput, TOutput>
 
 	public GadgetRuntime ExtendWith(Gadget gadget)
 	{
-		return new GadgetRuntime(gadget, InnerGadgetRuntime.State);
+		return InnerGadgetRuntime.ExtendWith(gadget);
 	}
 
 	public async Task<TOutput> RunAsync(TInput input, CancellationToken cancellationToken = default)

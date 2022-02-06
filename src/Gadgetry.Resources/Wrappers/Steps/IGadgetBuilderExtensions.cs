@@ -10,11 +10,7 @@ public static class IGadgetBuilderExtensions
 		GadgetFunc<TOutput> stepGadget,
 		out IResourceKey<TOutput> outputResourceKey)
 	{
-		gadgetBuilder.Configure(configure =>
-		{
-			var feature = configure.Features.GetOrCreateFeature<GadgetStepsFeature>();
-			feature.steps.Add(new GadgetStep(stepGadget.InnerGadget));
-		});
+		gadgetBuilder.UseStep(stepGadget.InnerGadget);
 
 		outputResourceKey = stepGadget.OutputResourceKey;
 		return gadgetBuilder;
@@ -26,11 +22,7 @@ public static class IGadgetBuilderExtensions
 		out ReadBlockingResourceKey<TInput> inputResourceKey,
 		out IResourceKey<TOutput> outputResourceKey)
 	{
-		gadgetBuilder.Configure(configure =>
-		{
-			var feature = configure.Features.GetOrCreateFeature<GadgetStepsFeature>();
-			feature.steps.Add(new GadgetStep(stepGadget.InnerGadget));
-		});
+		gadgetBuilder.UseStep(stepGadget.InnerGadget);
 
 		inputResourceKey = stepGadget.InputResourceKey;
 		outputResourceKey = stepGadget.OutputResourceKey;
