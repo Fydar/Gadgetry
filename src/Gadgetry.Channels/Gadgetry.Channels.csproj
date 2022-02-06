@@ -11,7 +11,7 @@
   <PropertyGroup>
     <Product>Gadgetry.Channels</Product>
     <PackageId>Gadgetry.Channels</PackageId>
-    <VersionPrefix>0.0.2</VersionPrefix>
+    <VersionPrefix>0.0.3</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <PackageDescription>Extensions for Gadgetry to support channels.</PackageDescription>
     <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
@@ -19,6 +19,7 @@
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
+    <PackageIconUrl>https://raw.githubusercontent.com/Fydar/Gadgetry/main/src/Gadgetry.Channels/icon.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

@@ -11,14 +11,15 @@
   <PropertyGroup>
     <Product>Gadgetry</Product>
     <PackageId>Gadgetry</PackageId>
-    <VersionPrefix>0.0.2</VersionPrefix>
+    <VersionPrefix>0.0.3</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
-    <PackageDescription>Gadgetry.</PackageDescription>
+    <PackageDescription>A library for creating long-running tasks and background workers.</PackageDescription>
     <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
+    <PackageIconUrl>https://raw.githubusercontent.com/Fydar/Gadgetry/main/src/Gadgetry/icon.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
