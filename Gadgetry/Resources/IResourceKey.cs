@@ -4,7 +4,7 @@
 	{
 	}
 
-	public interface IResourceKey<TModel> : IResourceKey
+	public interface IResourceKey<out TModel> : IResourceKey
 	{
 	}
 }
