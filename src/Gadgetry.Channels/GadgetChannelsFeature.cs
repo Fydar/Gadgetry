@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Gadgetry.Channels;
 
+/// <summary>
+/// A feature used to interact with the <b>"channels"</b> associated with an <see cref="Gadget"/>.
+/// </summary>
 public class GadgetChannelsFeature : IGadgetFinaliseFeature
 {
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] internal readonly List<IGadgetChannel> channels = new();
@@ -26,6 +29,9 @@ public class GadgetChannelsFeature : IGadgetFinaliseFeature
 	/// </summary>
 	public IReadOnlyList<IGadgetChannelReader> Readers => readers;
 
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetChannelsFeature"/>.
+	/// </summary>
 	public GadgetChannelsFeature()
 	{
 	}

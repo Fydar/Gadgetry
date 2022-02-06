@@ -1,7 +1,16 @@
 ﻿namespace Gadgetry.Workers;
 
+/// <summary>
+/// Extension methods of <see cref="IGadgetBuilder"/> for adding <b>"worker"</b> support.
+/// </summary>
 public static class IGadgetBuilderExtensions
 {
+	/// <summary>
+	/// Configures the <see cref="IGadgetBuilder"/> with a worker executed during the <see cref="GadgetRuntime"/> execution.
+	/// </summary>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
+	/// <param name="workerGadget">The worker executed during the <see cref="GadgetRuntime"/> execution.</param>
+	/// <returns>The current instance of this <see cref="IGadgetBuilder"/>.</returns>
 	public static IGadgetBuilder UseWorker(
 		this IGadgetBuilder gadgetBuilder,
 		Gadget workerGadget)
@@ -16,6 +25,13 @@ public static class IGadgetBuilderExtensions
 		return gadgetBuilder;
 	}
 
+	/// <summary>
+	/// Configures the <see cref="IGadgetBuilder"/> with a worker executed during the <see cref="GadgetRuntime"/> execution.
+	/// </summary>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
+	/// <param name="workerGadget">The worker executed during the <see cref="GadgetRuntime"/> execution.</param>
+	/// <param name="workerGadgetOptions">Options used to configure the behaviour of the worker.</param>
+	/// <returns>The current instance of this <see cref="IGadgetBuilder"/>.</returns>
 	public static IGadgetBuilder UseWorker(
 		this IGadgetBuilder gadgetBuilder,
 		Gadget workerGadget,
@@ -31,6 +47,12 @@ public static class IGadgetBuilderExtensions
 		return gadgetBuilder;
 	}
 
+	/// <summary>
+	/// Configures the <see cref="IGadgetBuilder"/> with a worker executed during the <see cref="GadgetRuntime"/> execution.
+	/// </summary>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
+	/// <param name="workerGadget">The worker executed during the <see cref="GadgetRuntime"/> execution.</param>
+	/// <returns>The current instance of this <see cref="IGadgetBuilder"/>.</returns>
 	public static IGadgetBuilder UseWorker(
 		this IGadgetBuilder gadgetBuilder,
 		IGadgetBuilder workerGadget)
@@ -47,6 +69,13 @@ public static class IGadgetBuilderExtensions
 		return gadgetBuilder;
 	}
 
+	/// <summary>
+	/// Configures the <see cref="IGadgetBuilder"/> with a worker executed during the <see cref="GadgetRuntime"/> execution.
+	/// </summary>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
+	/// <param name="workerGadget">The worker executed during the <see cref="GadgetRuntime"/> execution.</param>
+	/// <param name="workerGadgetOptions">Options used to configure the behaviour of the worker.</param>
+	/// <returns>The current instance of this <see cref="IGadgetBuilder"/>.</returns>
 	public static IGadgetBuilder UseWorker(
 		this IGadgetBuilder gadgetBuilder,
 		IGadgetBuilder workerGadget,

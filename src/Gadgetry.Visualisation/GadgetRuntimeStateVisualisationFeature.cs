@@ -4,11 +4,17 @@ using System.Threading;
 
 namespace Gadgetry.Visualisation;
 
+/// <summary>
+/// A feature used to interact with the <b>visualisations</b> associated with an <see cref="GadgetRuntimeState"/>.
+/// </summary>
 public class GadgetRuntimeStateVisualisationFeature : IGadgetRuntimeStateFeature
 {
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly Dictionary<VisualiserTerm, double> terms = new();
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly Mutex mutex = new();
 
+	/// <summary>
+	/// A collection of all known terms associated with the visualisation feature.
+	/// </summary>
 	public IReadOnlyDictionary<VisualiserTerm, double> Terms => terms;
 
 	public void SetTerm(

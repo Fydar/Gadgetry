@@ -2,6 +2,10 @@
 
 namespace Gadgetry.Channels;
 
+/// <summary>
+/// Represents a hard-typed reader of a <see cref="GadgetChannel{TModel}"/>.
+/// </summary>
+/// <typeparam name="TModel">A model representing the content of the channel.</typeparam>
 public class GadgetChannelReader<TModel> : IGadgetChannelReader
 {
 	/// <summary>

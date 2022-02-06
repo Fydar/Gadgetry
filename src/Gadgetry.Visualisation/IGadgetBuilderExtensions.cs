@@ -1,5 +1,8 @@
 ﻿namespace Gadgetry.Visualisation;
 
+/// <summary>
+/// Extension methods of <see cref="IGadgetBuilder"/> for adding <b>"visualiser"</b> support.
+/// </summary>
 public static class IGadgetBuilderExtensions
 {
 	public static IGadgetBuilder AddVisualiser<TVisualiser>(

@@ -77,7 +77,7 @@ public class GadgetRuntime
 	/// Executes an additional gadget using this gadgets runtime state.
 	/// </summary>
 	/// <param name="gadget">The gadget to execute.</param>
-	/// <returns></returns>
+	/// <returns>A runtime used to represent the state of the execution.</returns>
 	public GadgetRuntime ExtendWith(Gadget gadget)
 	{
 		return new GadgetRuntime(gadget, State);
