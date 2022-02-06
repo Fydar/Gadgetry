@@ -9,7 +9,6 @@
 			gadgetBuilder.Configure(configure =>
 			{
 				var feature = configure.Features.GetOrCreateFeature<GadgetStepsFeature>();
-
 				feature.steps.Add(new GadgetStep(stepGadget));
 			});
 			return gadgetBuilder;
@@ -22,9 +21,7 @@
 			gadgetBuilder.Configure(configure =>
 			{
 				var feature = configure.Features.GetOrCreateFeature<GadgetStepsFeature>();
-
 				string? stepIdentifier = $"{configure.Identifier}-step{feature.steps.Count}";
-
 				feature.steps.Add(new GadgetStep(stepGadget.Build(stepIdentifier)));
 			});
 			return gadgetBuilder;

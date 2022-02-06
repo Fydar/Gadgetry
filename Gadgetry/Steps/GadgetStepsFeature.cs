@@ -18,7 +18,7 @@ namespace Gadgetry.Steps
 
 		void IGadgetInitFeature.Init(GadgetRuntime gadgetRuntime)
 		{
-			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetStepsRuntimeFeature>();
+			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeStepsFeature>();
 
 			foreach (var step in Steps)
 			{
@@ -30,10 +30,12 @@ namespace Gadgetry.Steps
 
 		async Task IGadgetRunFeature.RunAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken)
 		{
-			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetStepsRuntimeFeature>();
+			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeStepsFeature>();
 
-			foreach (var stepRuntime in runtimeFeature.steps)
+			for (int i = 0; i < runtimeFeature.steps.Count; i++)
 			{
+				var stepRuntime = runtimeFeature.steps[i];
+
 				await stepRuntime.RunAsync(cancellationToken);
 			}
 		}
