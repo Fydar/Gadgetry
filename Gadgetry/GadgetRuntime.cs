@@ -83,25 +83,31 @@ namespace Gadgetry
 
 			StartTime = DateTimeOffset.UtcNow;
 
-			var runFeatures = Template.Features.GetAllFeatures<IGadgetRunFeature>();
-
-			var runFeatureTasks = new List<Task>();
-			foreach (var runFeature in runFeatures)
+			try
 			{
-				runFeatureTasks.Add(runFeature.RunAsync(this, cancellationToken));
-			}
+				var runFeatures = Template.Features.GetAllFeatures<IGadgetRunFeature>();
+
+				var runFeatureTasks = new List<Task>();
+				foreach (var runFeature in runFeatures)
+				{
+					runFeatureTasks.Add(runFeature.RunAsync(this, cancellationToken));
+				}
 			await Task.WhenAll(runFeatureTasks);
 
-			var finaliseFeatures = Template.Features.GetAllFeatures<IGadgetFinaliseFeature>();
+				var finaliseFeatures = Template.Features.GetAllFeatures<IGadgetFinaliseFeature>();
 
-			var finaliseFeatureTasks = new List<Task>();
-			foreach (var finaliseFeature in finaliseFeatures)
-			{
-				finaliseFeatureTasks.Add(finaliseFeature.FinaliseAsync(this, cancellationToken));
-			}
+				var finaliseFeatureTasks = new List<Task>();
+				foreach (var finaliseFeature in finaliseFeatures)
+				{
+					finaliseFeatureTasks.Add(finaliseFeature.FinaliseAsync(this, cancellationToken));
+				}
 			await Task.WhenAll(finaliseFeatureTasks);
 
-			EndTime = DateTimeOffset.UtcNow;
+			}
+			finally
+			{
+				EndTime = DateTimeOffset.UtcNow;
+			}
 		}
 
 		public override string ToString()
