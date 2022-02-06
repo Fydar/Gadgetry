@@ -30,6 +30,21 @@ namespace Gadgetry
 		public DateTimeOffset? EndTime { get; set; }
 
 		/// <summary>
+		/// The duration that this gadget has been running. If this step hasn't started, returns <see cref="TimeSpan.Zero"/>.
+		/// </summary>
+		public TimeSpan Elapsed
+		{
+			get
+			{
+				if (StartTime == null)
+				{
+					return TimeSpan.Zero;
+				}
+				return (EndTime ?? DateTimeOffset.UtcNow) - StartTime.Value;
+			}
+		}
+
+		/// <summary>
 		/// Determines whether this step has been completed.
 		/// </summary>
 		/// <seealso cref="EndTime"/>
