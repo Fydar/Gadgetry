@@ -39,7 +39,7 @@ A **step** will run one-after-another.
   Workers
 </h2>
 
-A **worker** will run in parralel with all other workers.
+A **worker** will run in parallel with all other workers.
 
 <p align="center">
   <img src="./img/worker.svg" alt="A gadget that utilises steps."/>

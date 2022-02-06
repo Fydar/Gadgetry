@@ -26,6 +26,7 @@ public class AutoInitialisedResource<TModel> : IResource<TModel>
 		return factoryTask;
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		if (factoryTask.IsCompleted)

@@ -2,8 +2,18 @@
 
 namespace Gadgetry.Channels;
 
+/// <summary>
+/// Extension methods of <see cref="GadgetRuntime"/> for interacting with <b>"channel"</b> support.
+/// </summary>
 public static class GadgetRuntimeExtensions
 {
+	/// <summary>
+	/// Gets a <see cref="ChannelReader{TModel}"/> that can read from the channel represented by <paramref name="channelReader"/>.
+	/// </summary>
+	/// <typeparam name="TModel">A type that represents the content of the channel.</typeparam>
+	/// <param name="gadgetRuntime">The <see cref="GadgetRuntime"/> to provide read context.</param>
+	/// <param name="channelReader">The reader to open.</param>
+	/// <returns>A <see cref="ChannelReader{TModel}"/> that can read from the channel represented by <paramref name="channelReader"/>.</returns>
 	public static ChannelReader<TModel> OpenReader<TModel>(
 		this GadgetRuntime gadgetRuntime,
 		GadgetChannelReader<TModel> channelReader)
@@ -13,6 +23,13 @@ public static class GadgetRuntimeExtensions
 		return reader.Source.InnerChannel.Reader;
 	}
 
+	/// <summary>
+	/// Gets a <see cref="ChannelWriter{TModel}"/> that can write to the channel represented by <paramref name="channelWriter"/>.
+	/// </summary>
+	/// <typeparam name="TModel">A type that represents the content of the channel.</typeparam>
+	/// <param name="gadgetRuntime">The <see cref="GadgetRuntime"/> to provide read context.</param>
+	/// <param name="channelWriter">The writer to open.</param>
+	/// <returns>A <see cref="ChannelWriter{TModel}"/> that can write to the channel represented by <paramref name="channelWriter"/>.</returns>
 	public static ChannelWriter<TModel> OpenWriter<TModel>(
 		this GadgetRuntime gadgetRuntime,
 		GadgetChannelWriter<TModel> channelWriter)
@@ -22,6 +39,13 @@ public static class GadgetRuntimeExtensions
 		return writer.Destination.InnerChannel.Writer;
 	}
 
+	/// <summary>
+	/// Gets a <see cref="GadgetRuntimeChannelReader{TModel}"/> that can be used to read from the channel represented by <paramref name="channelReader"/>.
+	/// </summary>
+	/// <typeparam name="TModel">A type that represents the content of the channel.</typeparam>
+	/// <param name="gadgetRuntime">The <see cref="GadgetRuntime"/> to provide read context.</param>
+	/// <param name="channelReader">The reader to get the runtime version of.</param>
+	/// <returns>A <see cref="GadgetRuntimeChannelReader{TModel}"/> that can be used to read from the channel represented by <paramref name="channelReader"/>.</returns>
 	public static GadgetRuntimeChannelReader<TModel> GetReader<TModel>(
 		this GadgetRuntime gadgetRuntime,
 		GadgetChannelReader<TModel> channelReader)
@@ -51,6 +75,13 @@ public static class GadgetRuntimeExtensions
 		return newReader;
 	}
 
+	/// <summary>
+	/// Gets a <see cref="GadgetRuntimeChannelWriter{TModel}"/> that can be used to write to the channel represented by <paramref name="channelWriter"/>.
+	/// </summary>
+	/// <typeparam name="TModel">A type that represents the content of the channel.</typeparam>
+	/// <param name="gadgetRuntime">The <see cref="GadgetRuntime"/> to provide read context.</param>
+	/// <param name="channelWriter">The writer to get the runtime version of.</param>
+	/// <returns>A <see cref="GadgetRuntimeChannelWriter{TModel}"/> that can be used to write to the channel represented by <paramref name="channelWriter"/>.</returns>
 	public static GadgetRuntimeChannelWriter<TModel> GetWriter<TModel>(
 		this GadgetRuntime gadgetRuntime,
 		GadgetChannelWriter<TModel> channelWriter)

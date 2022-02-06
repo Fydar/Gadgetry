@@ -5,13 +5,22 @@ using System.Threading.Tasks;
 
 namespace Gadgetry.Workers;
 
+/// <summary>
+/// A feature used to interact with the <b>workers</b> associated with an <see cref="Gadget"/>.
+/// </summary>
 public sealed class GadgetWorkersFeature : IGadgetInitFeature, IGadgetRunFeature
 {
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	internal readonly List<GadgetWorkerGroup> workerGroups = new();
 
+	/// <summary>
+	/// A collection of all worker groups associated with the <see cref="Gadget"/>
+	/// </summary>
 	public IReadOnlyList<GadgetWorkerGroup> WorkerGroups => workerGroups;
 
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetWorkersFeature"/> class.
+	/// </summary>
 	public GadgetWorkersFeature()
 	{
 	}
@@ -24,7 +33,7 @@ public sealed class GadgetWorkersFeature : IGadgetInitFeature, IGadgetRunFeature
 		{
 			var workerGadgetRuntimeGroup = new GadgetRuntimeWorkerGroup();
 
-			for (int i = 0; i < workerGroup.Options.WorkerGroups; i++)
+			for (int i = 0; i < workerGroup.Options.Workers; i++)
 			{
 				var workerGadgetRuntime = gadgetRuntime.ExtendWith(workerGroup.WorkerGadget);
 
