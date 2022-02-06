@@ -1,5 +1,4 @@
 ﻿using Gadgetry.Channels;
-using Gadgetry.Channels.Documentation;
 using Gadgetry.Documentation;
 using Gadgetry.Resources;
 using Gadgetry.Steps;

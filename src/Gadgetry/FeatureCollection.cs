@@ -20,7 +20,7 @@ public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	public int Count => features.Count;
 
-	internal FeatureCollection()
+	public FeatureCollection()
 	{
 		features = new ConcurrentBag<TFeature>();
 	}

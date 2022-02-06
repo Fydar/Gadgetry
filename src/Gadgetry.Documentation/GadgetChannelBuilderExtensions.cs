@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Gadgetry.Channels;
+using System;
 
-namespace Gadgetry.Channels.Documentation;
+namespace Gadgetry.Documentation;
 
 public static class GadgetChannelBuilderExtensions
 {

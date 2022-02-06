@@ -1,4 +1,4 @@
-﻿namespace Gadgetry.Channels.Documentation;
+﻿namespace Gadgetry.Documentation;
 
 public class GadgetChannelDocumentationOptions
 {
