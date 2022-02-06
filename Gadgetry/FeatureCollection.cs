@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Gadgetry
 {
@@ -10,49 +12,59 @@ namespace Gadgetry
 	public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 		where TFeature : class, IFeature
 	{
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly Mutex mutex = new();
+
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		internal readonly List<TFeature> features;
+		internal readonly ConcurrentBag<TFeature> features;
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public int Count => features.Count;
 
 		internal FeatureCollection()
 		{
-			features = new List<TFeature>();
+			features = new ConcurrentBag<TFeature>();
 		}
 
 		public T? GetFeature<T>()
 			where T : class, TFeature
 		{
+			mutex.WaitOne();
 			var getFeatureType = typeof(T);
 			foreach (object? feature in features)
 			{
 				var featureType = feature.GetType();
 				if (getFeatureType.IsAssignableFrom(featureType))
 				{
+					mutex.ReleaseMutex();
 					return (T)feature;
 				}
 			}
+			mutex.ReleaseMutex();
 			return null;
 		}
 
 		public IEnumerable<T> GetAllFeatures<T>()
 			where T : class, TFeature
 		{
+			mutex.WaitOne();
+			var foundFeatures = new List<T>();
 			var getFeatureType = typeof(T);
 			foreach (var feature in features)
 			{
 				var featureType = feature.GetType();
 				if (getFeatureType.IsAssignableFrom(featureType))
 				{
-					yield return (T)feature;
+					foundFeatures.Add((T)feature);
 				}
 			}
+			mutex.ReleaseMutex();
+			return foundFeatures;
 		}
 
 		public T GetOrCreateFeature<T>()
 			where T : class, TFeature, new()
 		{
+			mutex.WaitOne();
 			var feature = GetFeature<T>();
 
 			if (feature == null)
@@ -60,12 +72,14 @@ namespace Gadgetry
 				feature = new T();
 				features.Add(feature);
 			}
+			mutex.ReleaseMutex();
 			return feature;
 		}
 
 		public T GetOrCreateFeature<T>(Func<T> factory)
 			where T : class, TFeature
 		{
+			mutex.WaitOne();
 			var feature = GetFeature<T>();
 
 			if (feature == null)
@@ -73,6 +87,7 @@ namespace Gadgetry
 				feature = factory.Invoke();
 				features.Add(feature);
 			}
+			mutex.ReleaseMutex();
 			return feature;
 		}
 
@@ -116,12 +131,12 @@ namespace Gadgetry
 			{
 				get
 				{
-					var featuresDebugView = new FeatureDebugView[source.features.Count];
-					for (int i = 0; i < featuresDebugView.Length; i++)
+					var rows = new List<FeatureDebugView>(source.features.Count);
+					foreach (var feature in source.features)
 					{
-						featuresDebugView[i] = new FeatureDebugView(source.features[i]);
+						rows.Add(new FeatureDebugView(feature));
 					}
-					return featuresDebugView;
+					return rows.ToArray();
 				}
 			}
 
