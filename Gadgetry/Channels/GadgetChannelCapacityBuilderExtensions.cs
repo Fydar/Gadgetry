@@ -1,29 +1,28 @@
 ﻿using System;
 
-namespace Gadgetry.Channels
+namespace Gadgetry.Channels;
+
+public static class GadgetChannelCapacityBuilderExtensions
 {
-	public static class GadgetChannelCapacityBuilderExtensions
+	public static GadgetChannel<TModel> UseChannelCapacity<TModel>(
+		this GadgetChannel<TModel> gadgetChannel,
+		Action<GadgetChannelCapacityOptions> options)
 	{
-		public static GadgetChannel<TModel> UseChannelCapacity<TModel>(
-			this GadgetChannel<TModel> gadgetChannel,
-			Action<GadgetChannelCapacityOptions> options)
-		{
-			var feature = gadgetChannel.Features.GetOrCreateFeature<GadgetChannelCapacityFeature>();
+		var feature = gadgetChannel.Features.GetOrCreateFeature<GadgetChannelCapacityFeature>();
 
-			options.Invoke(feature.Options);
+		options.Invoke(feature.Options);
 
-			return gadgetChannel;
-		}
+		return gadgetChannel;
+	}
 
-		public static GadgetChannel<TModel> UseChannelCapacity<TModel>(
-			this GadgetChannel<TModel> gadgetChannel,
-			int capacity)
-		{
-			var feature = gadgetChannel.Features.GetOrCreateFeature<GadgetChannelCapacityFeature>();
+	public static GadgetChannel<TModel> UseChannelCapacity<TModel>(
+		this GadgetChannel<TModel> gadgetChannel,
+		int capacity)
+	{
+		var feature = gadgetChannel.Features.GetOrCreateFeature<GadgetChannelCapacityFeature>();
 
-			feature.Options.Capacity = capacity;
+		feature.Options.Capacity = capacity;
 
-			return gadgetChannel;
-		}
+		return gadgetChannel;
 	}
 }

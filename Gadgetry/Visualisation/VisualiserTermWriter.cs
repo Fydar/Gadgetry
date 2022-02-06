@@ -1,12 +1,11 @@
-﻿namespace Gadgetry.Visualisation
-{
-	public class VisualiserTermWriter
-	{
-		public VisualiserTerm ForTerm { get; }
+﻿namespace Gadgetry.Visualisation;
 
-		internal VisualiserTermWriter(VisualiserTerm forTerm)
-		{
-			ForTerm = forTerm;
-		}
+public class VisualiserTermWriter
+{
+	public VisualiserTerm ForTerm { get; }
+
+	internal VisualiserTermWriter(VisualiserTerm forTerm)
+	{
+		ForTerm = forTerm;
 	}
 }

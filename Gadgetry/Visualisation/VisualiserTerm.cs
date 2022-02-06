@@ -1,14 +1,13 @@
-﻿namespace Gadgetry.Visualisation
-{
-	public class VisualiserTerm : IVisualiserData
-	{
-		public string Name { get; }
-		public string Colour { get; }
+﻿namespace Gadgetry.Visualisation;
 
-		internal VisualiserTerm(string name, string colour)
-		{
-			Name = name;
-			Colour = colour;
-		}
+public class VisualiserTerm : IVisualiserData
+{
+	public string Name { get; }
+	public string Colour { get; }
+
+	internal VisualiserTerm(string name, string colour)
+	{
+		Name = name;
+		Colour = colour;
 	}
 }

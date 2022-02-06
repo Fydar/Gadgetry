@@ -1,16 +1,15 @@
 ﻿using System.Threading.Tasks;
 
-namespace Gadgetry.Demo
+namespace Gadgetry.Demo;
+
+internal class Program
 {
-	internal class Program
+	private static async Task Main(string[] args)
 	{
-		private static async Task Main(string[] args)
-		{
-			var task = CounterSample.CreateCounterSample();
+		var task = CounterSample.CreateCounterSample();
 
-			var runner = task.CreateRunner();
+		var runner = task.CreateRunner();
 
-			await runner.RunAsync();
-		}
+		await runner.RunAsync();
 	}
 }

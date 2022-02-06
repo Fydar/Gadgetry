@@ -1,7 +1,6 @@
-﻿namespace Gadgetry.Channels
+﻿namespace Gadgetry.Channels;
+
+public interface IGadgetChannelReader
 {
-	public interface IGadgetChannelReader
-	{
-		public IGadgetChannel Source { get; }
-	}
+	public IGadgetChannel Source { get; }
 }

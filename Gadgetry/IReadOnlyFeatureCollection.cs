@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Gadgetry
+namespace Gadgetry;
+
+public interface IReadOnlyFeatureCollection<TFeature> : IReadOnlyCollection<TFeature>
+	where TFeature : class, IFeature
 {
-	public interface IReadOnlyFeatureCollection<TFeature> : IReadOnlyCollection<TFeature>
-		where TFeature : class, IFeature
-	{
-		IEnumerable<T> GetAllFeatures<T>() where T : class, TFeature;
-		T? GetFeature<T>() where T : class, TFeature;
-	}
+	IEnumerable<T> GetAllFeatures<T>() where T : class, TFeature;
+	T? GetFeature<T>() where T : class, TFeature;
 }

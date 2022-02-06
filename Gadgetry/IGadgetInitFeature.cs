@@ -1,7 +1,6 @@
-﻿namespace Gadgetry
+﻿namespace Gadgetry;
+
+public interface IGadgetInitFeature : IGadgetFeature
 {
-	public interface IGadgetInitFeature : IGadgetFeature
-	{
-		void Init(GadgetRuntime gadgetRuntime);
-	}
+	void Init(GadgetRuntime gadgetRuntime);
 }

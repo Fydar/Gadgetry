@@ -1,8 +1,7 @@
-﻿namespace Gadgetry.Channels
+﻿namespace Gadgetry.Channels;
+
+public interface IGadgetRuntimeChannelReader
 {
-	public interface IGadgetRuntimeChannelReader
-	{
-		public IGadgetChannelReader Template { get; }
-		public IGadgetRuntimeChannel Source { get; }
-	}
+	public IGadgetChannelReader Template { get; }
+	public IGadgetRuntimeChannel Source { get; }
 }

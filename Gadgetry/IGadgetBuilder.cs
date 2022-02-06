@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace Gadgetry
+namespace Gadgetry;
+
+public interface IGadgetBuilder
 {
-	public interface IGadgetBuilder
-	{
-		Gadget Build(string identifier);
-		IGadgetBuilder Configure(Action<GadgetOptions> options);
-	}
+	Gadget Build(string identifier);
+	IGadgetBuilder Configure(Action<GadgetOptions> options);
 }

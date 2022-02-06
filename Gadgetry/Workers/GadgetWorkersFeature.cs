@@ -3,54 +3,53 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gadgetry.Workers
+namespace Gadgetry.Workers;
+
+public sealed class GadgetWorkersFeature : IGadgetInitFeature, IGadgetRunFeature
 {
-	public sealed class GadgetWorkersFeature : IGadgetInitFeature, IGadgetRunFeature
+	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+	internal readonly List<GadgetWorkerGroup> workerGroups = new();
+
+	public IReadOnlyList<GadgetWorkerGroup> WorkerGroups => workerGroups;
+
+	public GadgetWorkersFeature()
 	{
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		internal readonly List<GadgetWorkerGroup> workerGroups = new();
+	}
 
-		public IReadOnlyList<GadgetWorkerGroup> WorkerGroups => workerGroups;
+	void IGadgetInitFeature.Init(GadgetRuntime gadgetRuntime)
+	{
+		var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeWorkersFeature>();
 
-		public GadgetWorkersFeature()
+		foreach (var workerGroup in workerGroups)
 		{
-		}
+			var workerGadgetRuntimeGroup = new GadgetRuntimeWorkerGroup();
 
-		void IGadgetInitFeature.Init(GadgetRuntime gadgetRuntime)
-		{
-			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeWorkersFeature>();
-
-			foreach (var workerGroup in workerGroups)
+			for (int i = 0; i < workerGroup.Options.WorkerGroups; i++)
 			{
-				var workerGadgetRuntimeGroup = new GadgetRuntimeWorkerGroup();
+				var workerGadgetRuntime = gadgetRuntime.ExtendWith(workerGroup.WorkerGadget);
 
-				for (int i = 0; i < workerGroup.Options.WorkerGroups; i++)
-				{
-					var workerGadgetRuntime = gadgetRuntime.ExtendWith(workerGroup.WorkerGadget);
+				workerGadgetRuntimeGroup.workers.Add(workerGadgetRuntime);
+			}
 
-					workerGadgetRuntimeGroup.workers.Add(workerGadgetRuntime);
-				}
+			runtimeFeature.workerGroups.Add(workerGadgetRuntimeGroup);
+		}
+	}
 
-				runtimeFeature.workerGroups.Add(workerGadgetRuntimeGroup);
+	async Task IGadgetRunFeature.RunAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken)
+	{
+		var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeWorkersFeature>();
+
+		var tasks = new List<Task>();
+		foreach (var workerGroup in runtimeFeature.workerGroups)
+		{
+			foreach (var worker in workerGroup.workers)
+			{
+				var workerGadgetRuntimeTask = worker.RunAsync(cancellationToken);
+
+				tasks.Add(workerGadgetRuntimeTask);
 			}
 		}
 
-		async Task IGadgetRunFeature.RunAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken)
-		{
-			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeWorkersFeature>();
-
-			var tasks = new List<Task>();
-			foreach (var workerGroup in runtimeFeature.workerGroups)
-			{
-				foreach (var worker in workerGroup.workers)
-				{
-					var workerGadgetRuntimeTask = worker.RunAsync(cancellationToken);
-
-					tasks.Add(workerGadgetRuntimeTask);
-				}
-			}
-
-			await Task.WhenAll(tasks);
-		}
+		await Task.WhenAll(tasks);
 	}
 }

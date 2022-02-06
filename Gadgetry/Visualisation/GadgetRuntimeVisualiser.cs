@@ -1,12 +1,11 @@
-﻿namespace Gadgetry.Visualisation
-{
-	public class GadgetRuntimeVisualiser
-	{
-		public IGadgetVisualiser Template { get; }
+﻿namespace Gadgetry.Visualisation;
 
-		public GadgetRuntimeVisualiser(IGadgetVisualiser template)
-		{
-			Template = template;
-		}
+public class GadgetRuntimeVisualiser
+{
+	public IGadgetVisualiser Template { get; }
+
+	public GadgetRuntimeVisualiser(IGadgetVisualiser template)
+	{
+		Template = template;
 	}
 }

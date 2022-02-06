@@ -1,7 +1,6 @@
-﻿namespace Gadgetry.Visualisation
-{
-	public interface IVisualiserData
-	{
+﻿namespace Gadgetry.Visualisation;
 
-	}
+public interface IVisualiserData
+{
+
 }

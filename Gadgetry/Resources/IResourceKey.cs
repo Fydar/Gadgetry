@@ -1,10 +1,9 @@
-﻿namespace Gadgetry.Resources
-{
-	public interface IResourceKey
-	{
-	}
+﻿namespace Gadgetry.Resources;
 
-	public interface IResourceKey<out TModel> : IResourceKey
-	{
-	}
+public interface IResourceKey
+{
+}
+
+public interface IResourceKey<out TModel> : IResourceKey
+{
 }

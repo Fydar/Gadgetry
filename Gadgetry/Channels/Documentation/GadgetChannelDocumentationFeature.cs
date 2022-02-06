@@ -1,12 +1,11 @@
-﻿namespace Gadgetry.Channels.Documentation
-{
-	public class GadgetChannelDocumentationFeature : IGadgetChannelFeature
-	{
-		public GadgetChannelDocumentationOptions Options { get; }
+﻿namespace Gadgetry.Channels.Documentation;
 
-		public GadgetChannelDocumentationFeature()
-		{
-			Options = new GadgetChannelDocumentationOptions();
-		}
+public class GadgetChannelDocumentationFeature : IGadgetChannelFeature
+{
+	public GadgetChannelDocumentationOptions Options { get; }
+
+	public GadgetChannelDocumentationFeature()
+	{
+		Options = new GadgetChannelDocumentationOptions();
 	}
 }

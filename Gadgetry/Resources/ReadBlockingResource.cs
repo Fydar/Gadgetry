@@ -3,45 +3,44 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gadgetry.Resources
+namespace Gadgetry.Resources;
+
+public class ReadBlockingResource<TModel> : IResource<TModel>
 {
-	public class ReadBlockingResource<TModel> : IResource<TModel>
+	private readonly TaskCompletionSource<TModel> completion;
+
+	public ReadBlockingResourceKey<TModel> Key { get; }
+
+	[DebuggerBrowsable(DebuggerBrowsableState.Never)] IResourceKey IResource.Key => Key;
+
+	internal ReadBlockingResource(ReadBlockingResourceKey<TModel> key)
 	{
-		private readonly TaskCompletionSource<TModel> completion;
+		Key = key;
+		completion = new TaskCompletionSource<TModel>();
+	}
 
-		public ReadBlockingResourceKey<TModel> Key { get; }
+	public async ValueTask<TModel> ReadAsync(CancellationToken cancellationToken = default)
+	{
+		return await completion.Task;
+	}
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)] IResourceKey IResource.Key => Key;
-
-		internal ReadBlockingResource(ReadBlockingResourceKey<TModel> key)
+	public void SetResult(TModel model)
+	{
+		if (!completion.TrySetResult(model))
 		{
-			Key = key;
-			completion = new TaskCompletionSource<TModel>();
+			throw new InvalidOperationException($"Trying to set a result of a {nameof(ReadBlockingResource<TModel>)} that already has a value.");
 		}
+	}
 
-		public async ValueTask<TModel> ReadAsync(CancellationToken cancellationToken = default)
+	public override string ToString()
+	{
+		if (completion.Task.IsCompleted)
 		{
-			return await completion.Task;
+			return $"{Key}: {completion.Task.Result}";
 		}
-
-		public void SetResult(TModel model)
+		else
 		{
-			if (!completion.TrySetResult(model))
-			{
-				throw new InvalidOperationException($"Trying to set a result of a {nameof(ReadBlockingResource<TModel>)} that already has a value.");
-			}
-		}
-
-		public override string ToString()
-		{
-			if (completion.Task.IsCompleted)
-			{
-				return $"{Key}: {completion.Task.Result}";
-			}
-			else
-			{
-				return $"{Key}: Pending...";
-			}
+			return $"{Key}: Pending...";
 		}
 	}
 }

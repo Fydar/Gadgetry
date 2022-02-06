@@ -1,12 +1,11 @@
-﻿namespace Gadgetry.Tasks
-{
-	public class GadgetTask
-	{
-		public GadgetTaskCallbackAsync TaskCallback { get; }
+﻿namespace Gadgetry.Tasks;
 
-		internal GadgetTask(GadgetTaskCallbackAsync taskCallback)
-		{
-			TaskCallback = taskCallback;
-		}
+public class GadgetTask
+{
+	public GadgetTaskCallbackAsync TaskCallback { get; }
+
+	internal GadgetTask(GadgetTaskCallbackAsync taskCallback)
+	{
+		TaskCallback = taskCallback;
 	}
 }

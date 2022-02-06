@@ -1,10 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gadgetry
+namespace Gadgetry;
+
+public interface IGadgetFinaliseFeature : IGadgetFeature
 {
-	public interface IGadgetFinaliseFeature : IGadgetFeature
-	{
-		Task FinaliseAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken = default);
-	}
+	Task FinaliseAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken = default);
 }

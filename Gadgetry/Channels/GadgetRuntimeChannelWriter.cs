@@ -1,46 +1,45 @@
 ﻿using System.Diagnostics;
 using System.Linq;
 
-namespace Gadgetry.Channels
+namespace Gadgetry.Channels;
+
+public class GadgetRuntimeChannelWriter<TModel> : IGadgetRuntimeChannelWriter
 {
-	public class GadgetRuntimeChannelWriter<TModel> : IGadgetRuntimeChannelWriter
+	public GadgetChannelWriter<TModel> Template { get; }
+	public GadgetRuntimeChannel<TModel> Destination { get; }
+	public bool HasCompletedWriting { get; private set; }
+
+	[DebuggerBrowsable(DebuggerBrowsableState.Never)] IGadgetChannelWriter IGadgetRuntimeChannelWriter.Template => Template;
+	[DebuggerBrowsable(DebuggerBrowsableState.Never)] IGadgetRuntimeChannel IGadgetRuntimeChannelWriter.Destination => Destination;
+
+	public GadgetRuntimeChannelWriter(
+		GadgetChannelWriter<TModel> template,
+		GadgetRuntimeChannel<TModel> destination)
 	{
-		public GadgetChannelWriter<TModel> Template { get; }
-		public GadgetRuntimeChannel<TModel> Destination { get; }
-		public bool HasCompletedWriting { get; private set; }
+		Template = template;
+		Destination = destination;
+	}
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)] IGadgetChannelWriter IGadgetRuntimeChannelWriter.Template => Template;
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)] IGadgetRuntimeChannel IGadgetRuntimeChannelWriter.Destination => Destination;
-
-		public GadgetRuntimeChannelWriter(
-			GadgetChannelWriter<TModel> template,
-			GadgetRuntimeChannel<TModel> destination)
+	public void CompleteWriting()
+	{
+		Destination.state.mutex.WaitOne();
+		try
 		{
-			Template = template;
-			Destination = destination;
-		}
+			HasCompletedWriting = true;
 
-		public void CompleteWriting()
-		{
-			Destination.state.mutex.WaitOne();
-			try
+			if (Destination.Writers.All(writer => writer.HasCompletedWriting))
 			{
-				HasCompletedWriting = true;
-
-				if (Destination.Writers.All(writer => writer.HasCompletedWriting))
-				{
-					Destination.InnerChannel.Writer.TryComplete();
-				}
-			}
-			finally
-			{
-				Destination.state.mutex.ReleaseMutex();
+				Destination.InnerChannel.Writer.TryComplete();
 			}
 		}
-
-		public override string ToString()
+		finally
 		{
-			return $"'write to '{Destination.Template.Identifier}'";
+			Destination.state.mutex.ReleaseMutex();
 		}
+	}
+
+	public override string ToString()
+	{
+		return $"'write to '{Destination.Template.Identifier}'";
 	}
 }
