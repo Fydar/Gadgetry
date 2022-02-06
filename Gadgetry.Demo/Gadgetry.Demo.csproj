@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
+    <ProjectReference Include="..\Gadgetry.Channels\Gadgetry.Channels.csproj" />
+    <ProjectReference Include="..\Gadgetry.Visualisation\Gadgetry.Visualisation.csproj" />
   </ItemGroup>
 
 </Project>
