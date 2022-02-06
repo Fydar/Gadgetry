@@ -15,4 +15,8 @@
     <PackageReference Include="System.Threading.Channels" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
+  </ItemGroup>
+
 </Project>

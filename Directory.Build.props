@@ -1,0 +1,87 @@
+<Project>
+
+  <!-- Informative -->
+  <PropertyGroup>
+    <Authors>Anthony Marmont</Authors>
+    <Copyright>Copyright © Anthony Marmont</Copyright>
+    <Company>Anthony Marmont</Company>
+    <Product>Gadgetry</Product>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageLicenseExpression>CC-BY-NC-4.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+    <PackageProjectUrl>https://github.com/Fydar/Gadgetry</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- Icon -->
+  <PropertyGroup>
+    <PackageIcon>icon.png</PackageIcon>
+    <!-- <PackageIconUrl>https://raw.githubusercontent.com/Fydar/Gadgetry/main/src/icon.png</PackageIconUrl> -->
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' == 'true'">
+    <None Include="$(MSBuildThisFileDirectory)icon.png">
+      <Pack>true</Pack>
+      <PackagePath>/$(PackageIcon)</PackagePath>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+  <!-- Debugging -->
+  <PropertyGroup>
+    <DebugType>portable</DebugType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <!-- Compilation -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <Features>strict</Features>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
+    <MinClientVersion>4.3</MinClientVersion>
+    <UseSharedCompilation>true</UseSharedCompilation>
+  </PropertyGroup>
+
+  <!-- Signing -->
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)Gadgetry.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorPublicKey>0024000004800000940000000602000000240000525341310004000001000100111dac79da6c2ec4d80a0f0ad89a6d63aa5117ff80d092d989a398bdfa30d9a3e7396112dc712f0643ef02ff5f58286ad339445fb2daac00c7c081e805ecb55dc0c2c4a08905775014e900a7c5cf758df1262403e2a9280a44b71b73e825727b9e81114b736532e34f736906c747c9f6fccd386a52d9fdf180137b640e66a6b1</AssemblyOriginatorPublicKey>
+  </PropertyGroup>
+
+  <!-- Output -->
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <OverwriteReadOnlyFiles>true</OverwriteReadOnlyFiles>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <GenerateFullPaths Condition="'$(TERM_PROGRAM)' == 'vscode'">true</GenerateFullPaths>
+
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+    <BaseArtifactsPath>$(MSBuildThisFileDirectory)/artifacts/</BaseArtifactsPath>
+    <BaseArtifactsPathSuffix>$(MSBuildProjectName)</BaseArtifactsPathSuffix>
+
+    <BaseOutputPath>$(BaseArtifactsPath)bin/$(BaseArtifactsPathSuffix)/</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(BaseArtifactsPath)obj/$(BaseArtifactsPathSuffix)/</BaseIntermediateOutputPath>
+    <PackageOutputPath>$(BaseArtifactsPath)pkg/$(Configuration)/</PackageOutputPath>
+
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" Key="$(AssemblyOriginatorPublicKey)" />
+  </ItemGroup>
+
+</Project>
