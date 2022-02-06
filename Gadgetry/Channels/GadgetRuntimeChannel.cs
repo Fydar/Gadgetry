@@ -25,7 +25,21 @@ namespace Gadgetry.Channels
 			GadgetChannel<TModel> template)
 		{
 			Template = template;
-			InnerChannel = Channel.CreateBounded<TModel>(1024);
+
+			var capacityFeature = template.Features.GetFeature<GadgetChannelCapacityFeature>();
+
+			if (capacityFeature != null)
+			{
+				InnerChannel = Channel.CreateBounded<TModel>(
+					new BoundedChannelOptions(capacityFeature.Options.Capacity)
+					{
+						FullMode = capacityFeature.Options.FullMode
+					});
+			}
+			else
+			{
+				InnerChannel = Channel.CreateUnbounded<TModel>();
+			}
 		}
 
 		public override string ToString()
