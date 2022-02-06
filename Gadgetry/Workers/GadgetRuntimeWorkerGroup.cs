@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Gadgetry.Workers
 {
-	public sealed class GadgetWorkersRuntimeFeature : IGadgetRuntimeFeature
+	public sealed class GadgetRuntimeWorkerGroup
 	{
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		internal readonly List<GadgetRuntime> workers = new();
