@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +26,10 @@ namespace Gadgetry.Resources
 
 		public void SetResult(TModel model)
 		{
-			completion.SetResult(model);
+			if (!completion.TrySetResult(model))
+			{
+				throw new InvalidOperationException($"Trying to set a result of a {nameof(ReadBlockingResource<TModel>)} that already has a value.");
+			}
 		}
 
 		public override string ToString()
