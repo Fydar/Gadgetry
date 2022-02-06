@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Gadgetry.Workers
-{
-	public sealed class GadgetRuntimeWorkersFeature : IGadgetRuntimeFeature
-	{
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		internal readonly List<GadgetRuntimeWorkerGroup> workerGroups = new();
+namespace Gadgetry.Workers;
 
-		public IReadOnlyList<GadgetRuntimeWorkerGroup> WorkerGroups => workerGroups;
-	}
+public sealed class GadgetRuntimeWorkersFeature : IGadgetRuntimeFeature
+{
+	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+	internal readonly List<GadgetRuntimeWorkerGroup> workerGroups = new();
+
+	public IReadOnlyList<GadgetRuntimeWorkerGroup> WorkerGroups => workerGroups;
 }

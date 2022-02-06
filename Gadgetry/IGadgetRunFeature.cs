@@ -1,12 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gadgetry
+namespace Gadgetry;
+
+public interface IGadgetRunFeature : IGadgetFeature
 {
-	public interface IGadgetRunFeature : IGadgetFeature
-	{
-		Task RunAsync(
-			GadgetRuntime gadgetRuntime,
-			CancellationToken cancellationToken = default);
-	}
+	Task RunAsync(
+		GadgetRuntime gadgetRuntime,
+		CancellationToken cancellationToken = default);
 }

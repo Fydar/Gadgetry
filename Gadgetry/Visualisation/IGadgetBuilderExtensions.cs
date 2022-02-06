@@ -1,24 +1,23 @@
-﻿namespace Gadgetry.Visualisation
+﻿namespace Gadgetry.Visualisation;
+
+public static class IGadgetBuilderExtensions
 {
-	public static class IGadgetBuilderExtensions
+	public static IGadgetBuilder AddVisualiser<TVisualiser>(
+		this IGadgetBuilder gadgetBuilder,
+		out GadgetVisualiser<TVisualiser> visualiser,
+		TVisualiser design)
+		where TVisualiser : IVisualiser
 	{
-		public static IGadgetBuilder AddVisualiser<TVisualiser>(
-			this IGadgetBuilder gadgetBuilder,
-			out GadgetVisualiser<TVisualiser> visualiser,
-			TVisualiser design)
-			where TVisualiser : IVisualiser
+		var gadgetVisualiser = new GadgetVisualiser<TVisualiser>(design);
+		visualiser = gadgetVisualiser;
+
+		gadgetBuilder.Configure(configure =>
 		{
-			var gadgetVisualiser = new GadgetVisualiser<TVisualiser>(design);
-			visualiser = gadgetVisualiser;
+			var feature = configure.Features.GetOrCreateFeature<GadgetVisualisationFeature>();
 
-			gadgetBuilder.Configure(configure =>
-			{
-				var feature = configure.Features.GetOrCreateFeature<GadgetVisualisationFeature>();
+			feature.visualisers.Add(gadgetVisualiser);
+		});
 
-				feature.visualisers.Add(gadgetVisualiser);
-			});
-
-			return gadgetBuilder;
-		}
+		return gadgetBuilder;
 	}
 }

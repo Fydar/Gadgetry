@@ -1,21 +1,20 @@
 ﻿using System;
 
-namespace Gadgetry.Documentation
+namespace Gadgetry.Documentation;
+
+public static class IGadgetBuilderExtensions
 {
-	public static class IGadgetBuilderExtensions
+	public static IGadgetBuilder UseDocumentation(
+		this IGadgetBuilder gadgetBuilder,
+		Action<GadgetDocumentationOptions> options)
 	{
-		public static IGadgetBuilder UseDocumentation(
-			this IGadgetBuilder gadgetBuilder,
-			Action<GadgetDocumentationOptions> options)
+		gadgetBuilder.Configure(configure =>
 		{
-			gadgetBuilder.Configure(configure =>
-			{
-				var feature = configure.Features.GetOrCreateFeature<GadgetDocumentationFeature>();
+			var feature = configure.Features.GetOrCreateFeature<GadgetDocumentationFeature>();
 
-				options.Invoke(feature.Options);
-			});
+			options.Invoke(feature.Options);
+		});
 
-			return gadgetBuilder;
-		}
+		return gadgetBuilder;
 	}
 }

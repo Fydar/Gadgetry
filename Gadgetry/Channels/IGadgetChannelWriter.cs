@@ -1,7 +1,6 @@
-﻿namespace Gadgetry.Channels
+﻿namespace Gadgetry.Channels;
+
+public interface IGadgetChannelWriter
 {
-	public interface IGadgetChannelWriter
-	{
-		public IGadgetChannel Destination { get; }
-	}
+	public IGadgetChannel Destination { get; }
 }

@@ -3,33 +3,32 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gadgetry.Tasks
+namespace Gadgetry.Tasks;
+
+public class GadgetTasksFeature : IGadgetRunFeature
 {
-	public class GadgetTasksFeature : IGadgetRunFeature
+	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+	internal readonly List<GadgetTask> tasks = new();
+
+	public IReadOnlyList<GadgetTask> Tasks => tasks;
+
+	public GadgetTasksFeature()
 	{
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		internal readonly List<GadgetTask> tasks = new();
+	}
 
-		public IReadOnlyList<GadgetTask> Tasks => tasks;
+	async Task IGadgetRunFeature.RunAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken)
+	{
+		var awaitAll = new List<Task>();
 
-		public GadgetTasksFeature()
+		foreach (var task in Tasks)
 		{
+			var taskRunner = Task.Run(() => task.TaskCallback(gadgetRuntime, cancellationToken), cancellationToken);
+			awaitAll.Add(taskRunner);
 		}
 
-		async Task IGadgetRunFeature.RunAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken)
+		foreach (var awaitTarget in awaitAll)
 		{
-			var awaitAll = new List<Task>();
-
-			foreach (var task in Tasks)
-			{
-				var taskRunner = Task.Run(() => task.TaskCallback(gadgetRuntime, cancellationToken), cancellationToken);
-				awaitAll.Add(taskRunner);
-			}
-
-			foreach (var awaitTarget in awaitAll)
-			{
-				await awaitTarget;
-			}
+			await awaitTarget;
 		}
 	}
 }

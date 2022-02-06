@@ -1,7 +1,6 @@
-﻿namespace Gadgetry
+﻿namespace Gadgetry;
+
+public class GadgetRuntimeState
 {
-	public class GadgetRuntimeState
-	{
-		public IFeatureCollection<IGadgetRuntimeStateFeature> Features { get; } = new FeatureCollection<IGadgetRuntimeStateFeature>();
-	}
+	public IFeatureCollection<IGadgetRuntimeStateFeature> Features { get; } = new FeatureCollection<IGadgetRuntimeStateFeature>();
 }

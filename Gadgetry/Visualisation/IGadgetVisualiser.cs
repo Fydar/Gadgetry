@@ -1,7 +1,6 @@
-﻿namespace Gadgetry.Visualisation
+﻿namespace Gadgetry.Visualisation;
+
+public interface IGadgetVisualiser
 {
-	public interface IGadgetVisualiser
-	{
-		IVisualiser Visualiser { get; }
-	}
+	IVisualiser Visualiser { get; }
 }

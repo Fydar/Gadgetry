@@ -1,7 +1,6 @@
-﻿namespace Gadgetry.Channels
+﻿namespace Gadgetry.Channels;
+
+public interface IGadgetChannel
 {
-	public interface IGadgetChannel
-	{
-		string Identifier { get; }
-	}
+	string Identifier { get; }
 }

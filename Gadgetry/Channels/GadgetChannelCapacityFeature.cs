@@ -1,12 +1,11 @@
-﻿namespace Gadgetry.Channels
-{
-	public class GadgetChannelCapacityFeature : IGadgetChannelFeature
-	{
-		public GadgetChannelCapacityOptions Options { get; }
+﻿namespace Gadgetry.Channels;
 
-		public GadgetChannelCapacityFeature()
-		{
-			Options = new GadgetChannelCapacityOptions();
-		}
+public class GadgetChannelCapacityFeature : IGadgetChannelFeature
+{
+	public GadgetChannelCapacityOptions Options { get; }
+
+	public GadgetChannelCapacityFeature()
+	{
+		Options = new GadgetChannelCapacityOptions();
 	}
 }

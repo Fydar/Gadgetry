@@ -1,7 +1,6 @@
-﻿namespace Gadgetry
-{
-	public interface IFeature
-	{
+﻿namespace Gadgetry;
 
-	}
+public interface IFeature
+{
+
 }

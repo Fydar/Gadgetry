@@ -2,40 +2,39 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gadgetry.Resources
+namespace Gadgetry.Resources;
+
+public class AutoInitialisedResource<TModel> : IResource<TModel>
 {
-	public class AutoInitialisedResource<TModel> : IResource<TModel>
+	private readonly Task<TModel> factoryTask;
+
+	public AutoInitialisedResourceKey<TModel> Key { get; }
+
+	[DebuggerBrowsable(DebuggerBrowsableState.Never)] IResourceKey IResource.Key => Key;
+
+	internal AutoInitialisedResource(
+		GadgetRuntime modularTask,
+		AutoInitialisedResourceKey<TModel> key)
 	{
-		private readonly Task<TModel> factoryTask;
+		Key = key;
 
-		public AutoInitialisedResourceKey<TModel> Key { get; }
+		factoryTask = key.factory.Invoke(modularTask).AsTask();
+	}
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)] IResourceKey IResource.Key => Key;
+	public async ValueTask<TModel> ReadAsync(CancellationToken cancellationToken = default)
+	{
+		return await factoryTask;
+	}
 
-		internal AutoInitialisedResource(
-			GadgetRuntime modularTask,
-			AutoInitialisedResourceKey<TModel> key)
+	public override string ToString()
+	{
+		if (factoryTask.IsCompleted)
 		{
-			Key = key;
-
-			factoryTask = key.factory.Invoke(modularTask).AsTask();
+			return $"{Key}: {factoryTask.Result}";
 		}
-
-		public async ValueTask<TModel> ReadAsync(CancellationToken cancellationToken = default)
+		else
 		{
-			return await factoryTask;
-		}
-
-		public override string ToString()
-		{
-			if (factoryTask.IsCompleted)
-			{
-				return $"{Key}: {factoryTask.Result}";
-			}
-			else
-			{
-				return $"{Key}: Pending...";
-			}
+			return $"{Key}: Pending...";
 		}
 	}
 }

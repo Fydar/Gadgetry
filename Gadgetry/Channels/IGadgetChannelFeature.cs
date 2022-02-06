@@ -1,6 +1,5 @@
-﻿namespace Gadgetry.Channels
+﻿namespace Gadgetry.Channels;
+
+public interface IGadgetChannelFeature : IFeature
 {
-	public interface IGadgetChannelFeature : IFeature
-	{
-	}
 }

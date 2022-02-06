@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace Gadgetry.Channels
+namespace Gadgetry.Channels;
+
+public interface IGadgetRuntimeChannel
 {
-	public interface IGadgetRuntimeChannel
-	{
-		public IGadgetChannel Template { get; }
+	public IGadgetChannel Template { get; }
 
-		public IEnumerable<IGadgetRuntimeChannelReader> Readers { get; }
+	public IEnumerable<IGadgetRuntimeChannelReader> Readers { get; }
 
-		public IEnumerable<IGadgetRuntimeChannelWriter> Writers { get; }
-	}
+	public IEnumerable<IGadgetRuntimeChannelWriter> Writers { get; }
 }

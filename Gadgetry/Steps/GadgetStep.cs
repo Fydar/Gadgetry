@@ -1,17 +1,16 @@
-﻿namespace Gadgetry.Steps
+﻿namespace Gadgetry.Steps;
+
+public class GadgetStep
 {
-	public class GadgetStep
+	public Gadget StepGadget { get; }
+
+	internal GadgetStep(Gadget stepGadget)
 	{
-		public Gadget StepGadget { get; }
+		StepGadget = stepGadget;
+	}
 
-		internal GadgetStep(Gadget stepGadget)
-		{
-			StepGadget = stepGadget;
-		}
-
-		public override string ToString()
-		{
-			return $"{StepGadget}";
-		}
+	public override string ToString()
+	{
+		return $"{StepGadget}";
 	}
 }
