@@ -9,7 +9,7 @@ public class ResourceKey
 	{
 		return new AutoInitialisedResourceKey<TModel>((gadgetRuntime, cancellationToken) =>
 		{
-			return new ValueTask<TModel>(new TModel());
+			return Task.FromResult(new TModel());
 		});
 	}
 
@@ -17,7 +17,7 @@ public class ResourceKey
 	{
 		return new AutoInitialisedResourceKey<TModel>((gadgetRuntime, _) =>
 		{
-			return new ValueTask<TModel>(factory.Invoke(gadgetRuntime));
+			return Task.FromResult(factory.Invoke(gadgetRuntime));
 		});
 	}
 

@@ -10,5 +10,5 @@ public interface IResource
 
 public interface IResource<TModel> : IResource
 {
-	ValueTask<TModel> ReadAsync(CancellationToken cancellationToken = default);
+	Task<TModel> ReadAsync(CancellationToken cancellationToken = default);
 }

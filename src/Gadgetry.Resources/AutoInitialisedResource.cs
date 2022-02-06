@@ -18,12 +18,12 @@ public class AutoInitialisedResource<TModel> : IResource<TModel>
 	{
 		Key = key;
 
-		factoryTask = key.factory.Invoke(modularTask).AsTask();
+		factoryTask = key.factory.Invoke(modularTask);
 	}
 
-	public async ValueTask<TModel> ReadAsync(CancellationToken cancellationToken = default)
+	public Task<TModel> ReadAsync(CancellationToken cancellationToken = default)
 	{
-		return await factoryTask;
+		return factoryTask;
 	}
 
 	public override string ToString()

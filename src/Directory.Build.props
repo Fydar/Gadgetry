@@ -12,27 +12,13 @@
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageLicenseExpression>CC-BY-NC-4.0</PackageLicenseExpression>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 
     <PackageProjectUrl>https://github.com/Fydar/Gadgetry</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-
-  <!-- Icon -->
-  <PropertyGroup>
-    <PackageIcon>icon.png</PackageIcon>
-    <!-- <PackageIconUrl>https://raw.githubusercontent.com/Fydar/Gadgetry/main/src/icon.png</PackageIconUrl> -->
-  </PropertyGroup>
-
-  <ItemGroup Condition="'$(IsPackable)' == 'true'">
-    <None Include="$(MSBuildThisFileDirectory)icon.png">
-      <Pack>true</Pack>
-      <PackagePath>/$(PackageIcon)</PackagePath>
-      <Visible>false</Visible>
-    </None>
-  </ItemGroup>
 
   <!-- Debugging -->
   <PropertyGroup>
@@ -63,7 +49,8 @@
 
   <!-- Output -->
   <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!--<GenerateDocumentationFile>true</GenerateDocumentationFile> -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <OverwriteReadOnlyFiles>true</OverwriteReadOnlyFiles>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <GenerateFullPaths Condition="'$(TERM_PROGRAM)' == 'vscode'">true</GenerateFullPaths>

@@ -15,7 +15,7 @@ public class GadgetRuntime
 	public Gadget Template { get; }
 
 	/// <summary>
-	/// A state used to share resources between this <see cref="GadgetRuntime"/>, the <see cref="Parent"/> task, and the <see cref="SubTasks"/>.
+	/// A state used to share resources between other runtimes.
 	/// </summary>
 	public GadgetRuntimeState State { get; }
 
