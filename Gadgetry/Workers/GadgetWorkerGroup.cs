@@ -1,17 +1,17 @@
 ﻿namespace Gadgetry.Workers
 {
-	public class GadgetWorker
+	public class GadgetWorkerGroup
 	{
 		public Gadget WorkerGadget { get; }
 		public GadgetWorkerOptions Options { get; }
 
-		internal GadgetWorker(Gadget workerGadget)
+		internal GadgetWorkerGroup(Gadget workerGadget)
 		{
 			WorkerGadget = workerGadget;
 			Options = new GadgetWorkerOptions();
 		}
 
-		internal GadgetWorker(Gadget workerGadget, GadgetWorkerOptions options)
+		internal GadgetWorkerGroup(Gadget workerGadget, GadgetWorkerOptions options)
 		{
 			WorkerGadget = workerGadget;
 			Options = options;
@@ -19,7 +19,7 @@
 
 		public override string ToString()
 		{
-			return $"{Options.Workers}x {WorkerGadget}";
+			return $"{Options.WorkerGroups}x {WorkerGadget}";
 		}
 	}
 }

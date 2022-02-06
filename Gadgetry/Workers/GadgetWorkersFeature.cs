@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,9 +8,9 @@ namespace Gadgetry.Workers
 	public sealed class GadgetWorkersFeature : IGadgetInitFeature, IGadgetRunFeature
 	{
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		internal readonly List<GadgetWorker> workers = new();
+		internal readonly List<GadgetWorkerGroup> workerGroups = new();
 
-		public IReadOnlyList<GadgetWorker> Workers => workers;
+		public IReadOnlyList<GadgetWorkerGroup> WorkerGroups => workerGroups;
 
 		public GadgetWorkersFeature()
 		{
@@ -19,38 +18,36 @@ namespace Gadgetry.Workers
 
 		void IGadgetInitFeature.Init(GadgetRuntime gadgetRuntime)
 		{
-			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetWorkersRuntimeFeature>();
+			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeWorkersFeature>();
 
-			foreach (var worker in workers)
+			foreach (var workerGroup in workerGroups)
 			{
-				for (int i = 0; i < worker.Options.Workers; i++)
-				{
-					var workerGadgetRuntime = gadgetRuntime.ExtendWith(worker.WorkerGadget);
+				var workerGadgetRuntimeGroup = new GadgetRuntimeWorkerGroup();
 
-					runtimeFeature.workers.Add(workerGadgetRuntime);
+				for (int i = 0; i < workerGroup.Options.WorkerGroups; i++)
+				{
+					var workerGadgetRuntime = gadgetRuntime.ExtendWith(workerGroup.WorkerGadget);
+
+					workerGadgetRuntimeGroup.workers.Add(workerGadgetRuntime);
 				}
+
+				runtimeFeature.workerGroups.Add(workerGadgetRuntimeGroup);
 			}
 		}
 
 		async Task IGadgetRunFeature.RunAsync(GadgetRuntime gadgetRuntime, CancellationToken cancellationToken)
 		{
-			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetWorkersRuntimeFeature>();
+			var runtimeFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeWorkersFeature>();
 
 			var tasks = new List<Task>();
-			foreach (var worker in runtimeFeature.workers)
+			foreach (var workerGroup in runtimeFeature.workerGroups)
 			{
-				var workerGadgetRuntimeTask = worker.RunAsync(cancellationToken).AsTask();
-
-				var errorHandled = workerGadgetRuntimeTask.ContinueWith(continued =>
+				foreach (var worker in workerGroup.workers)
 				{
-					if (continued.IsFaulted)
-					{
-						Console.WriteLine(continued.Exception +
-							$"Worker \"{worker.Template.Identifier}\" failed unexpectedly.");
-					}
-				}, cancellationToken);
+					var workerGadgetRuntimeTask = worker.RunAsync(cancellationToken);
 
-				tasks.Add(errorHandled);
+					tasks.Add(workerGadgetRuntimeTask);
+				}
 			}
 
 			await Task.WhenAll(tasks);

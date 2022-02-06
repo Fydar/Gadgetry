@@ -10,7 +10,7 @@
 			{
 				var feature = configure.Features.GetOrCreateFeature<GadgetWorkersFeature>();
 
-				feature.workers.Add(new GadgetWorker(workerGadget));
+				feature.workerGroups.Add(new GadgetWorkerGroup(workerGadget));
 			});
 
 			return gadgetBuilder;
@@ -25,7 +25,7 @@
 			{
 				var feature = configure.Features.GetOrCreateFeature<GadgetWorkersFeature>();
 
-				feature.workers.Add(new GadgetWorker(workerGadget, workerGadgetOptions));
+				feature.workerGroups.Add(new GadgetWorkerGroup(workerGadget, workerGadgetOptions));
 			});
 
 			return gadgetBuilder;
@@ -39,9 +39,9 @@
 			{
 				var feature = configure.Features.GetOrCreateFeature<GadgetWorkersFeature>();
 
-				string stepIdentifier = $"{configure.Identifier}-worker{feature.workers.Count}";
+				string stepIdentifier = $"{configure.Identifier}-worker{feature.workerGroups.Count}";
 
-				feature.workers.Add(new GadgetWorker(workerGadget.Build(stepIdentifier)));
+				feature.workerGroups.Add(new GadgetWorkerGroup(workerGadget.Build(stepIdentifier)));
 			});
 
 			return gadgetBuilder;
@@ -56,9 +56,9 @@
 			{
 				var feature = configure.Features.GetOrCreateFeature<GadgetWorkersFeature>();
 
-				string stepIdentifier = $"{configure.Identifier}-worker{feature.workers.Count}";
+				string stepIdentifier = $"{configure.Identifier}-worker{feature.workerGroups.Count}";
 
-				feature.workers.Add(new GadgetWorker(workerGadget.Build(stepIdentifier), workerGadgetOptions));
+				feature.workerGroups.Add(new GadgetWorkerGroup(workerGadget.Build(stepIdentifier), workerGadgetOptions));
 			});
 
 			return gadgetBuilder;
