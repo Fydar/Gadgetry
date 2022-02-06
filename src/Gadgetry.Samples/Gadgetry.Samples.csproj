@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fydar.Samples" Version="0.0.1-alpha" />
+    <PackageReference Include="Fydar.Samples.CSharp" Version="0.0.1-alpha" />
+    <PackageReference Include="Fydar.Samples.Json" Version="0.0.1-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
+    <ProjectReference Include="..\Gadgetry.Documentation\Gadgetry.Documentation.csproj" />
+    <ProjectReference Include="..\Gadgetry.Resources\Gadgetry.Resources.csproj" />
+    <ProjectReference Include="..\Gadgetry.Steps\Gadgetry.Steps.csproj" />
+    <ProjectReference Include="..\Gadgetry.Workers\Gadgetry.Workers.csproj" />
+    <ProjectReference Include="..\Gadgetry.Channels\Gadgetry.Channels.csproj" />
+    <ProjectReference Include="..\Gadgetry.Visualisation\Gadgetry.Visualisation.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="Samples\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
