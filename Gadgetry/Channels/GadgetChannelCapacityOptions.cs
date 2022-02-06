@@ -1,6 +1,4 @@
-﻿using System.Threading.Channels;
-
-namespace Gadgetry.Channels
+﻿namespace Gadgetry.Channels
 {
 	public class GadgetChannelCapacityOptions
 	{

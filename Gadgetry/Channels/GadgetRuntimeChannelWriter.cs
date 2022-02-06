@@ -22,21 +22,20 @@ namespace Gadgetry.Channels
 
 		public void CompleteWriting()
 		{
-			Destination.mutex.WaitOne();
-
-			if (HasCompletedWriting)
+			Destination.state.mutex.WaitOne();
+			try
 			{
-				Destination.mutex.ReleaseMutex();
-				return;
-			}
-			HasCompletedWriting = true;
+				HasCompletedWriting = true;
 
-			if (Destination.Writers.All(writer => writer.HasCompletedWriting))
+				if (Destination.Writers.All(writer => writer.HasCompletedWriting))
+				{
+					Destination.InnerChannel.Writer.TryComplete();
+				}
+			}
+			finally
 			{
-				Destination.InnerChannel.Writer.Complete();
+				Destination.state.mutex.ReleaseMutex();
 			}
-
-			Destination.mutex.ReleaseMutex();
 		}
 
 		public override string ToString()

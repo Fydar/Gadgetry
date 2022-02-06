@@ -6,13 +6,14 @@ namespace Gadgetry.Channels
 {
 	public class GadgetRuntimeStateChannelsFeature : IGadgetRuntimeStateFeature
 	{
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly List<IGadgetRuntimeChannel> channels = new();
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly Mutex mutex = new();
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)] internal readonly Mutex mutex = new();
+
+		private readonly List<IGadgetRuntimeChannel> runtimeChannels = new();
 
 		public GadgetRuntimeChannel<TModel> GetOrCreateChannel<TModel>(GadgetChannel<TModel> channel)
 		{
 			mutex.WaitOne();
-			foreach (var runtimeChannel in channels)
+			foreach (var runtimeChannel in runtimeChannels)
 			{
 				if (runtimeChannel.Template == channel)
 				{
@@ -21,8 +22,8 @@ namespace Gadgetry.Channels
 				}
 			}
 
-			var newRuntimeChannel = new GadgetRuntimeChannel<TModel>(channel);
-			channels.Add(newRuntimeChannel);
+			var newRuntimeChannel = new GadgetRuntimeChannel<TModel>(this, channel);
+			runtimeChannels.Add(newRuntimeChannel);
 
 			mutex.ReleaseMutex();
 			return newRuntimeChannel;
