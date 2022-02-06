@@ -5,8 +5,17 @@ using System.Threading.Tasks;
 
 namespace Gadgetry;
 
+/// <summary>
+/// Represents a single invocation of a <see cref="Gadget"/>.
+/// </summary>
+/// <remarks>
+/// Instances of <see cref="GadgetRuntime"/> are constructed via the <see cref="Gadget.CreateRunner"/> method.
+/// </remarks>
 public class GadgetRuntime
 {
+	/// <summary>
+	/// A collection of all <see cref="IGadgetRuntimeFeature"/> features associated with this <see cref="GadgetRuntime"/>.
+	/// </summary>
 	public IFeatureCollection<IGadgetRuntimeFeature> Features { get; } = new FeatureCollection<IGadgetRuntimeFeature>();
 
 	/// <summary>
@@ -74,6 +83,12 @@ public class GadgetRuntime
 		return new GadgetRuntime(gadget, State);
 	}
 
+	/// <summary>
+	/// Attempts to run this <see cref="GadgetRuntime"/> to completion.
+	/// </summary>
+	/// <param name="cancellationToken">A token used to propogate notifications that an operation should be cancelled.</param>
+	/// <returns>A task representing the execution.</returns>
+	/// <exception cref="InvalidOperationException">Thrown when attempting to run multiple times.</exception>
 	public async Task RunAsync(CancellationToken cancellationToken = default)
 	{
 		if (StartTime != null)
@@ -110,6 +125,7 @@ public class GadgetRuntime
 		}
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return $"'{Template.Identifier}'";

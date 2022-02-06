@@ -2,6 +2,9 @@
 
 namespace Gadgetry.Channels;
 
+/// <summary>
+/// Extension methods of <see cref="GadgetChannel{TModel}"/> for adding <b>channel capacity</b> support.
+/// </summary>
 public static class GadgetChannelCapacityBuilderExtensions
 {
 	public static GadgetChannel<TModel> UseChannelCapacity<TModel>(

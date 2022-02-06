@@ -34,8 +34,4 @@
     <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" Key="$(AssemblyOriginatorPublicKey)" />
-  </ItemGroup>
-
 </Project>

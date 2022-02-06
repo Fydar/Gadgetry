@@ -17,6 +17,7 @@ public class GadgetWorkerGroup
 		Options = options;
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return $"{Options.WorkerGroups}x {WorkerGadget}";

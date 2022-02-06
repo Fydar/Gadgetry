@@ -49,8 +49,7 @@
 
   <!-- Output -->
   <PropertyGroup>
-    <!--<GenerateDocumentationFile>true</GenerateDocumentationFile> -->
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <OverwriteReadOnlyFiles>true</OverwriteReadOnlyFiles>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <GenerateFullPaths Condition="'$(TERM_PROGRAM)' == 'vscode'">true</GenerateFullPaths>

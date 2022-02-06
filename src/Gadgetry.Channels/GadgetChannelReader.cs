@@ -16,6 +16,7 @@ public class GadgetChannelReader<TModel> : IGadgetChannelReader
 		Source = source;
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return $"read from '{Source.Identifier}'";

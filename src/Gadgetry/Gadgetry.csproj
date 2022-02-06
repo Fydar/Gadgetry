@@ -29,8 +29,4 @@
     <None Include="icon.png" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
-  <ItemGroup>
-    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" Key="$(AssemblyOriginatorPublicKey)" />
-  </ItemGroup>
-
 </Project>

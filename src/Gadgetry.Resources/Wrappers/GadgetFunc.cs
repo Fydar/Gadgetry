@@ -20,6 +20,7 @@ public class GadgetFunc<TOutput>
 		return new GadgetRuntime<TOutput>(InnerGadget.CreateRunner(), OutputResourceKey);
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return InnerGadget.ToString();
@@ -47,6 +48,7 @@ public class GadgetFunc<TInput, TOutput>
 		return new GadgetRuntime<TInput, TOutput>(InnerGadget.CreateRunner(), InputResourceKey, OutputResourceKey);
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return InnerGadget.ToString();
