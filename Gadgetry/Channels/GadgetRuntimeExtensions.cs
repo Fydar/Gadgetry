@@ -1,6 +1,4 @@
-﻿using System.Threading.Channels;
-
-namespace Gadgetry.Channels
+﻿namespace Gadgetry.Channels
 {
 	public static class GadgetRuntimeExtensions
 	{
@@ -26,15 +24,16 @@ namespace Gadgetry.Channels
 			this GadgetRuntime gadgetRuntime,
 			GadgetChannelReader<TModel> channelReader)
 		{
+			var stateFeature = gadgetRuntime.State.Features.GetOrCreateFeature<GadgetRuntimeStateChannelsFeature>();
 			var channelsFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeChannelsFeature>();
 
-			channelsFeature.mutex.WaitOne();
+			stateFeature.mutex.WaitOne();
 
 			foreach (var reader in channelsFeature.readers)
 			{
 				if (reader.Template == channelReader)
 				{
-					channelsFeature.mutex.ReleaseMutex();
+					stateFeature.mutex.ReleaseMutex();
 					return (GadgetRuntimeChannelReader<TModel>)reader;
 				}
 			}
@@ -46,7 +45,7 @@ namespace Gadgetry.Channels
 			channelsFeature.readers.Add(newReader);
 			runtimeSourceChannel.readers.Add(newReader);
 
-			channelsFeature.mutex.ReleaseMutex();
+			stateFeature.mutex.ReleaseMutex();
 			return newReader;
 		}
 
@@ -54,15 +53,16 @@ namespace Gadgetry.Channels
 			this GadgetRuntime gadgetRuntime,
 			GadgetChannelWriter<TModel> channelWriter)
 		{
+			var stateFeature = gadgetRuntime.State.Features.GetOrCreateFeature<GadgetRuntimeStateChannelsFeature>();
 			var channelsFeature = gadgetRuntime.Features.GetOrCreateFeature<GadgetRuntimeChannelsFeature>();
 
-			channelsFeature.mutex.WaitOne();
+			stateFeature.mutex.WaitOne();
 
 			foreach (var writer in channelsFeature.writers)
 			{
 				if (writer.Template == channelWriter)
 				{
-					channelsFeature.mutex.ReleaseMutex();
+					stateFeature.mutex.ReleaseMutex();
 					return (GadgetRuntimeChannelWriter<TModel>)writer;
 				}
 			}
@@ -74,7 +74,7 @@ namespace Gadgetry.Channels
 			channelsFeature.writers.Add(newWriter);
 			runtimeDestinationChannel.writers.Add(newWriter);
 
-			channelsFeature.mutex.ReleaseMutex();
+			stateFeature.mutex.ReleaseMutex();
 			return newWriter;
 		}
 	}
