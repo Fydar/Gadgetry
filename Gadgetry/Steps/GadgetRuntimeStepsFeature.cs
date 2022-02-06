@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Gadgetry.Steps
 {
-	public sealed class GadgetStepsRuntimeFeature : IGadgetRuntimeFeature
+	public sealed class GadgetRuntimeStepsFeature : IGadgetRuntimeFeature
 	{
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		internal readonly List<GadgetRuntime> steps = new();
