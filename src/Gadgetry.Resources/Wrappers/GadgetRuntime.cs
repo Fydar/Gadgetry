@@ -31,6 +31,7 @@ public class GadgetRuntime<TOutput>
 		return await outputResource.ReadAsync(cancellationToken);
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return InnerGadgetRuntime.ToString();
@@ -70,6 +71,7 @@ public class GadgetRuntime<TInput, TOutput>
 		return await outputResource.ReadAsync(cancellationToken);
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return InnerGadgetRuntime.ToString();

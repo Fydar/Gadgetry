@@ -7,9 +7,12 @@ using System.Threading;
 
 namespace Gadgetry;
 
+/// <summary>
+/// A mutatable collection of features.
+/// </summary>
 [DebuggerDisplay("Count = {Count,nq}")]
 [DebuggerTypeProxy(typeof(FeatureCollection<>.FeatureCollectionDebugView))]
-public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
+public sealed class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 	where TFeature : class, IFeature
 {
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly Mutex mutex = new();
@@ -17,14 +20,21 @@ public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	internal readonly ConcurrentBag<TFeature> features;
 
+	/// <summary>
+	/// Gets the number of featured contained within this <see cref="FeatureCollection{TFeature}"/>
+	/// </summary>
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	public int Count => features.Count;
 
+	/// <summary>
+	/// Constructs a new instance of the <see cref="FeatureCollection{TFeature}"/> class.
+	/// </summary>
 	public FeatureCollection()
 	{
 		features = new ConcurrentBag<TFeature>();
 	}
 
+	/// <inheritdoc/>
 	public T? GetFeature<T>()
 		where T : class, TFeature
 	{
@@ -43,6 +53,7 @@ public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 		return null;
 	}
 
+	/// <inheritdoc/>
 	public IEnumerable<T> GetAllFeatures<T>()
 		where T : class, TFeature
 	{
@@ -61,6 +72,7 @@ public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 		return foundFeatures;
 	}
 
+	/// <inheritdoc/>
 	public T GetOrCreateFeature<T>()
 		where T : class, TFeature, new()
 	{
@@ -76,6 +88,7 @@ public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 		return feature;
 	}
 
+	/// <inheritdoc/>
 	public T GetOrCreateFeature<T>(Func<T> factory)
 		where T : class, TFeature
 	{
@@ -91,6 +104,7 @@ public class FeatureCollection<TFeature> : IFeatureCollection<TFeature>
 		return feature;
 	}
 
+	/// <inheritdoc/>
 	public IEnumerator<TFeature> GetEnumerator()
 	{
 		return features.GetEnumerator();

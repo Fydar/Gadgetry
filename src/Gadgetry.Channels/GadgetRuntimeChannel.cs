@@ -43,6 +43,7 @@ public class GadgetRuntimeChannel<TModel> : IGadgetRuntimeChannel
 		}
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return $"'{Template.Identifier}' {readers.Count}r {writers.Count}w";

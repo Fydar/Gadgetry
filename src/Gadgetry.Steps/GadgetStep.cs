@@ -9,6 +9,7 @@ public class GadgetStep
 		StepGadget = stepGadget;
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return $"{StepGadget}";

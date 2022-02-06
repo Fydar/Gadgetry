@@ -1,11 +1,15 @@
 ﻿namespace Gadgetry.Channels;
 
+/// <summary>
+/// Extension methods of <see cref="IGadgetBuilder"/> for adding <b>"channel"</b> support.
+/// </summary>
 public static class IGadgetBuilderExtensions
 {
 	/// <summary>
 	/// Creates a writer used to allow this gadget to write to a channel.
 	/// </summary>
 	/// <typeparam name="TModel">A model representing the content of the channel.</typeparam>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
 	/// <param name="channel">The channel to write to.</param>
 	/// <param name="writer">A writer used to write to the channel.</param>
 	/// <returns>The current instance of this <see cref="IGadgetBuilder"/>.</returns>
@@ -22,6 +26,7 @@ public static class IGadgetBuilderExtensions
 	/// Creates a reader used to allow this gadget to read from a channel.
 	/// </summary>
 	/// <typeparam name="TModel">A model representing the content of the channel.</typeparam>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
 	/// <param name="channel">The channel to read from.</param>
 	/// <param name="writer">A reader used to read from the channel.</param>
 	/// <returns>The current instance of this <see cref="IGadgetBuilder"/>.</returns>
@@ -38,6 +43,7 @@ public static class IGadgetBuilderExtensions
 	/// Creates a writer used to allow this gadget to write to a channel.
 	/// </summary>
 	/// <typeparam name="TModel">A model representing the content of the channel.</typeparam>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
 	/// <param name="channel">The channel to write to.</param>
 	/// <returns>A writer used to write to the channel.</returns>
 	public static GadgetChannelWriter<TModel> WriteTo<TModel>(
@@ -64,6 +70,7 @@ public static class IGadgetBuilderExtensions
 	/// Creates a reader used to allow this gadget to read from a channel.
 	/// </summary>
 	/// <typeparam name="TModel">A model representing the content of the channel.</typeparam>
+	/// <param name="gadgetBuilder">The <see cref="IGadgetBuilder"/> to configure.</param>
 	/// <param name="channel">The channel to read from.</param>
 	/// <returns>A reader used to read from the channel.</returns>
 	public static GadgetChannelReader<TModel> ReadFrom<TModel>(

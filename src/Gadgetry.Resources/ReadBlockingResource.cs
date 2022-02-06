@@ -32,6 +32,7 @@ public class ReadBlockingResource<TModel> : IResource<TModel>
 		}
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		if (completion.Task.IsCompleted)

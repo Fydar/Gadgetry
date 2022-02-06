@@ -5,6 +5,9 @@ using System.Threading;
 
 namespace Gadgetry.Resources;
 
+/// <summary>
+/// A feature used to interact with the <b>resources</b> associated with an <see cref="GadgetRuntimeState"/>.
+/// </summary>
 public class GadgetRuntimeStateResourcesFeature : IGadgetRuntimeStateFeature
 {
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly List<IResource> resources = new();

@@ -17,6 +17,7 @@ public class GadgetChannelWriter<TModel> : IGadgetChannelWriter
 		Destination = destination;
 	}
 
+	/// <inheritdoc/>
 	public override string ToString()
 	{
 		return $"write to '{Destination.Identifier}'";
