@@ -5,10 +5,31 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>Gadgetry.Channels</Product>
+    <PackageId>Gadgetry.Channels</PackageId>
+    <VersionPrefix>0.0.2</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+    <PackageDescription>Extensions for Gadgetry to support channels.</PackageDescription>
+    <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" Key="$(AssemblyOriginatorPublicKey)" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="icon.png" Pack="true" PackagePath="" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
+    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" Key="$(AssemblyOriginatorPublicKey)" />
   </ItemGroup>
 
 </Project>

@@ -19,9 +19,9 @@ public class ReadBlockingResource<TModel> : IResource<TModel>
 		completion = new TaskCompletionSource<TModel>();
 	}
 
-	public async ValueTask<TModel> ReadAsync(CancellationToken cancellationToken = default)
+	public Task<TModel> ReadAsync(CancellationToken cancellationToken = default)
 	{
-		return await completion.Task;
+		return completion.Task;
 	}
 
 	public void SetResult(TModel model)

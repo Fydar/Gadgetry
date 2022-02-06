@@ -5,19 +5,36 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>Gadgetry.Resources</Product>
+    <PackageId>Gadgetry.Resources</PackageId>
+    <VersionPrefix>0.0.2</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+    <PackageDescription>Extensions for Gadgetry to support resources.</PackageDescription>
+    <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" Key="$(AssemblyOriginatorPublicKey)" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Threading.Channels" Version="6.0.0" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="icon.png" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Gadgetry.Steps\Gadgetry.Steps.csproj" />
     <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).UnitTests" Key="$(AssemblyOriginatorPublicKey)" />
   </ItemGroup>
 
 </Project>
