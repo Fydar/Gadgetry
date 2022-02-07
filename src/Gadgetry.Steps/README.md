@@ -1,11 +1,5 @@
-<h1>
-<img src="https://raw.githubusercontent.com/Fydar/Gadgetry/main/src/Gadgetry.Steps/icon.png" width="60" height="60" align="left" />
-Gadgetry.Steps
-</h1>
+# ![Project icon](https://raw.githubusercontent.com/Fydar/Gadgetry/main/src/Gadgetry.Steps/icon@46x46.png) Gadgetry.Steps
 
 A **step** will run one-after-another.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Fydar/Gadgetry/main/img/steps.svg" alt="A gadget that utilises steps."/>
-  <sup><i>A gadget that utilises <b>steps</b>.</i></sup>
-</p>
+![A gadget that utilises steps.](https://raw.githubusercontent.com/Fydar/Gadgetry/main/img/steps.svg)
