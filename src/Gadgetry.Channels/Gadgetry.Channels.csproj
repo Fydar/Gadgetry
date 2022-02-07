@@ -11,7 +11,7 @@
   <PropertyGroup>
     <Product>Gadgetry.Channels</Product>
     <PackageId>Gadgetry.Channels</PackageId>
-    <VersionPrefix>0.0.3</VersionPrefix>
+    <VersionPrefix>0.0.4</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <PackageDescription>Extensions for Gadgetry to support channels.</PackageDescription>
     <PackageTags>Gadgetry Async</PackageTags>
