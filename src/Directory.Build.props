@@ -6,18 +6,20 @@
     <Copyright>Copyright © Anthony Marmont</Copyright>
     <Company>Anthony Marmont</Company>
     <Product>Gadgetry</Product>
-    <VersionPrefix>0.1.0</VersionPrefix>
-    <VersionSuffix>alpha</VersionSuffix>
 
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 
-    <PackageProjectUrl>https://github.com/Fydar/Gadgetry</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- Packaging -->
+  <PropertyGroup>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/Fydar/Gadgetry</PackageProjectUrl>
   </PropertyGroup>
 
   <!-- Debugging -->
