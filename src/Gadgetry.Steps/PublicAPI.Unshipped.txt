@@ -1,0 +1,12 @@
+Gadgetry.Steps.GadgetRuntimeStepsFeature
+Gadgetry.Steps.GadgetRuntimeStepsFeature.GadgetRuntimeStepsFeature() -> void
+Gadgetry.Steps.GadgetRuntimeStepsFeature.Steps.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.GadgetRuntime!>!
+Gadgetry.Steps.GadgetStep
+Gadgetry.Steps.GadgetStep.StepGadget.get -> Gadgetry.Gadget!
+Gadgetry.Steps.GadgetStepsFeature
+Gadgetry.Steps.GadgetStepsFeature.GadgetStepsFeature() -> void
+Gadgetry.Steps.GadgetStepsFeature.Steps.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Steps.GadgetStep!>!
+Gadgetry.Steps.IGadgetBuilderExtensions
+override Gadgetry.Steps.GadgetStep.ToString() -> string!
+static Gadgetry.Steps.IGadgetBuilderExtensions.UseStep(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Gadget! stepGadget) -> Gadgetry.IGadgetBuilder!
+static Gadgetry.Steps.IGadgetBuilderExtensions.UseStep(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.IGadgetBuilder! stepGadget) -> Gadgetry.IGadgetBuilder!

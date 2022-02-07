@@ -1,0 +1,21 @@
+Gadgetry.Workers.GadgetRuntimeWorkerGroup
+Gadgetry.Workers.GadgetRuntimeWorkerGroup.Workers.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.GadgetRuntime!>!
+Gadgetry.Workers.GadgetRuntimeWorkersFeature
+Gadgetry.Workers.GadgetRuntimeWorkersFeature.GadgetRuntimeWorkersFeature() -> void
+Gadgetry.Workers.GadgetRuntimeWorkersFeature.WorkerGroups.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Workers.GadgetRuntimeWorkerGroup!>!
+Gadgetry.Workers.GadgetWorkerGroup
+Gadgetry.Workers.GadgetWorkerGroup.Options.get -> Gadgetry.Workers.GadgetWorkerOptions!
+Gadgetry.Workers.GadgetWorkerGroup.WorkerGadget.get -> Gadgetry.Gadget!
+Gadgetry.Workers.GadgetWorkerOptions
+Gadgetry.Workers.GadgetWorkerOptions.GadgetWorkerOptions() -> void
+Gadgetry.Workers.GadgetWorkerOptions.GadgetWorkerOptions(int workers) -> void
+Gadgetry.Workers.GadgetWorkerOptions.Workers.get -> int
+Gadgetry.Workers.GadgetWorkersFeature
+Gadgetry.Workers.GadgetWorkersFeature.GadgetWorkersFeature() -> void
+Gadgetry.Workers.GadgetWorkersFeature.WorkerGroups.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Workers.GadgetWorkerGroup!>!
+Gadgetry.Workers.IGadgetBuilderExtensions
+override Gadgetry.Workers.GadgetWorkerGroup.ToString() -> string!
+static Gadgetry.Workers.IGadgetBuilderExtensions.UseWorker(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Gadget! workerGadget) -> Gadgetry.IGadgetBuilder!
+static Gadgetry.Workers.IGadgetBuilderExtensions.UseWorker(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Gadget! workerGadget, Gadgetry.Workers.GadgetWorkerOptions! workerGadgetOptions) -> Gadgetry.IGadgetBuilder!
+static Gadgetry.Workers.IGadgetBuilderExtensions.UseWorker(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.IGadgetBuilder! workerGadget) -> Gadgetry.IGadgetBuilder!
+static Gadgetry.Workers.IGadgetBuilderExtensions.UseWorker(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.IGadgetBuilder! workerGadget, Gadgetry.Workers.GadgetWorkerOptions! workerGadgetOptions) -> Gadgetry.IGadgetBuilder!
