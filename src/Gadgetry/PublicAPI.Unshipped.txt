@@ -1,0 +1,55 @@
+Gadgetry.FeatureCollection<TFeature>
+Gadgetry.FeatureCollection<TFeature>.Count.get -> int
+Gadgetry.FeatureCollection<TFeature>.FeatureCollection() -> void
+Gadgetry.FeatureCollection<TFeature>.GetAllFeatures<T>() -> System.Collections.Generic.IEnumerable<T!>!
+Gadgetry.FeatureCollection<TFeature>.GetEnumerator() -> System.Collections.Generic.IEnumerator<TFeature!>!
+Gadgetry.FeatureCollection<TFeature>.GetFeature<T>() -> T?
+Gadgetry.FeatureCollection<TFeature>.GetOrCreateFeature<T>() -> T!
+Gadgetry.FeatureCollection<TFeature>.GetOrCreateFeature<T>(System.Func<T!>! factory) -> T!
+Gadgetry.Gadget
+Gadgetry.Gadget.CreateRunner() -> Gadgetry.GadgetRuntime!
+Gadgetry.Gadget.Features.get -> Gadgetry.IReadOnlyFeatureCollection<Gadgetry.IGadgetFeature!>!
+Gadgetry.Gadget.Identifier.get -> string!
+Gadgetry.GadgetOptions
+Gadgetry.GadgetOptions.Features.get -> Gadgetry.IFeatureCollection<Gadgetry.IGadgetFeature!>!
+Gadgetry.GadgetOptions.Identifier.get -> string!
+Gadgetry.GadgetRuntime.Elapsed.get -> System.TimeSpan
+Gadgetry.GadgetRuntime.EndTime.get -> System.DateTimeOffset?
+Gadgetry.GadgetRuntime.ExtendWith(Gadgetry.Gadget! gadget) -> Gadgetry.GadgetRuntime!
+Gadgetry.GadgetRuntime.Features.get -> Gadgetry.IFeatureCollection<Gadgetry.IGadgetRuntimeFeature!>!
+Gadgetry.GadgetRuntime.IsCompleted.get -> bool
+Gadgetry.GadgetRuntime.RunAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
+Gadgetry.GadgetRuntime.StartTime.get -> System.DateTimeOffset?
+Gadgetry.GadgetRuntime.State.get -> Gadgetry.GadgetRuntimeState!
+Gadgetry.GadgetRuntime.Template.get -> Gadgetry.Gadget!
+Gadgetry.GadgetRuntimeState
+Gadgetry.GadgetRuntimeState.Features.get -> Gadgetry.IFeatureCollection<Gadgetry.IGadgetRuntimeStateFeature!>!
+Gadgetry.IFeature
+Gadgetry.IFeatureCollection<TFeature>
+Gadgetry.IFeatureCollection<TFeature>.GetOrCreateFeature<TType>() -> TType!
+Gadgetry.IFeatureCollection<TFeature>.GetOrCreateFeature<TType>(System.Func<TType!>! factory) -> TType!
+Gadgetry.IGadgetBuilder
+Gadgetry.IGadgetBuilder.Build(string! identifier) -> Gadgetry.Gadget!
+Gadgetry.IGadgetBuilder.Configure(System.Action<Gadgetry.GadgetOptions!>! options) -> Gadgetry.IGadgetBuilder!
+Gadgetry.IGadgetFeature
+Gadgetry.IGadgetFinaliseFeature
+Gadgetry.IGadgetFinaliseFeature.FinaliseAsync(Gadgetry.GadgetRuntime! gadgetRuntime, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
+Gadgetry.IGadgetInitFeature
+Gadgetry.IGadgetInitFeature.Init(Gadgetry.GadgetRuntime! gadgetRuntime) -> void
+Gadgetry.IGadgetRunFeature
+Gadgetry.IGadgetRunFeature.RunAsync(Gadgetry.GadgetRuntime! gadgetRuntime, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
+Gadgetry.IGadgetRuntimeFeature
+Gadgetry.IGadgetRuntimeStateFeature
+Gadgetry.IReadOnlyFeatureCollection<TFeature>
+Gadgetry.IReadOnlyFeatureCollection<TFeature>.GetAllFeatures<TType>() -> System.Collections.Generic.IEnumerable<TType!>!
+Gadgetry.IReadOnlyFeatureCollection<TFeature>.GetFeature<TType>() -> TType?
+Gadgetry.Tasks.GadgetTask
+Gadgetry.Tasks.GadgetTaskCallbackAsync
+Gadgetry.Tasks.GadgetTasksFeature
+Gadgetry.Tasks.GadgetTasksFeature.GadgetTasksFeature() -> void
+Gadgetry.Tasks.GadgetTasksFeature.Tasks.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Tasks.GadgetTask!>!
+Gadgetry.Tasks.IGadgetBuilderExtensions
+override Gadgetry.Gadget.ToString() -> string!
+override Gadgetry.GadgetRuntime.ToString() -> string!
+static Gadgetry.Gadget.Create() -> Gadgetry.IGadgetBuilder!
+static Gadgetry.Tasks.IGadgetBuilderExtensions.UseTask(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Tasks.GadgetTaskCallbackAsync! task) -> Gadgetry.IGadgetBuilder!

@@ -1,0 +1,25 @@
+Gadgetry.Documentation.GadgetChannelBuilderExtensions
+Gadgetry.Documentation.GadgetChannelDocumentationFeature
+Gadgetry.Documentation.GadgetChannelDocumentationFeature.GadgetChannelDocumentationFeature() -> void
+Gadgetry.Documentation.GadgetChannelDocumentationFeature.Options.get -> Gadgetry.Documentation.GadgetChannelDocumentationOptions!
+Gadgetry.Documentation.GadgetChannelDocumentationOptions
+Gadgetry.Documentation.GadgetChannelDocumentationOptions.Description.get -> string!
+Gadgetry.Documentation.GadgetChannelDocumentationOptions.Description.set -> void
+Gadgetry.Documentation.GadgetChannelDocumentationOptions.DisplayName.get -> string!
+Gadgetry.Documentation.GadgetChannelDocumentationOptions.DisplayName.set -> void
+Gadgetry.Documentation.GadgetChannelDocumentationOptions.GadgetChannelDocumentationOptions() -> void
+Gadgetry.Documentation.GadgetChannelDocumentationOptions.Icon.get -> string!
+Gadgetry.Documentation.GadgetChannelDocumentationOptions.Icon.set -> void
+Gadgetry.Documentation.GadgetDocumentationFeature
+Gadgetry.Documentation.GadgetDocumentationFeature.GadgetDocumentationFeature() -> void
+Gadgetry.Documentation.GadgetDocumentationFeature.Options.get -> Gadgetry.Documentation.GadgetDocumentationOptions!
+Gadgetry.Documentation.GadgetDocumentationOptions
+Gadgetry.Documentation.GadgetDocumentationOptions.Description.get -> string!
+Gadgetry.Documentation.GadgetDocumentationOptions.Description.set -> void
+Gadgetry.Documentation.GadgetDocumentationOptions.DisplayName.get -> string!
+Gadgetry.Documentation.GadgetDocumentationOptions.DisplayName.set -> void
+Gadgetry.Documentation.GadgetDocumentationOptions.Icon.get -> string!
+Gadgetry.Documentation.GadgetDocumentationOptions.Icon.set -> void
+Gadgetry.Documentation.IGadgetBuilderExtensions
+static Gadgetry.Documentation.GadgetChannelBuilderExtensions.UseDocumentation<TModel>(this Gadgetry.Channels.GadgetChannel<TModel>! gadgetChannel, System.Action<Gadgetry.Documentation.GadgetChannelDocumentationOptions!>! options) -> Gadgetry.Channels.GadgetChannel<TModel>!
+static Gadgetry.Documentation.IGadgetBuilderExtensions.UseDocumentation(this Gadgetry.IGadgetBuilder! gadgetBuilder, System.Action<Gadgetry.Documentation.GadgetDocumentationOptions!>! options) -> Gadgetry.IGadgetBuilder!

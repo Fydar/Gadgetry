@@ -1,0 +1,81 @@
+Gadgetry.Channels.GadgetChannel
+Gadgetry.Channels.GadgetChannel<TModel>
+Gadgetry.Channels.GadgetChannel<TModel>.Features.get -> Gadgetry.IFeatureCollection<Gadgetry.Channels.IGadgetChannelFeature!>!
+Gadgetry.Channels.GadgetChannel<TModel>.Identifier.get -> string!
+Gadgetry.Channels.GadgetChannelCapacityBuilderExtensions
+Gadgetry.Channels.GadgetChannelCapacityFeature
+Gadgetry.Channels.GadgetChannelCapacityFeature.GadgetChannelCapacityFeature() -> void
+Gadgetry.Channels.GadgetChannelCapacityFeature.Options.get -> Gadgetry.Channels.GadgetChannelCapacityOptions!
+Gadgetry.Channels.GadgetChannelCapacityOptions
+Gadgetry.Channels.GadgetChannelCapacityOptions.Capacity.get -> int
+Gadgetry.Channels.GadgetChannelCapacityOptions.Capacity.set -> void
+Gadgetry.Channels.GadgetChannelCapacityOptions.FullMode.get -> System.Threading.Channels.BoundedChannelFullMode
+Gadgetry.Channels.GadgetChannelCapacityOptions.FullMode.set -> void
+Gadgetry.Channels.GadgetChannelCapacityOptions.GadgetChannelCapacityOptions() -> void
+Gadgetry.Channels.GadgetChannelReader<TModel>
+Gadgetry.Channels.GadgetChannelReader<TModel>.Source.get -> Gadgetry.Channels.GadgetChannel<TModel>!
+Gadgetry.Channels.GadgetChannelsFeature
+Gadgetry.Channels.GadgetChannelsFeature.Channels.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Channels.IGadgetChannel!>!
+Gadgetry.Channels.GadgetChannelsFeature.GadgetChannelsFeature() -> void
+Gadgetry.Channels.GadgetChannelsFeature.Readers.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Channels.IGadgetChannelReader!>!
+Gadgetry.Channels.GadgetChannelsFeature.Writers.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Channels.IGadgetChannelWriter!>!
+Gadgetry.Channels.GadgetChannelWriter<TModel>
+Gadgetry.Channels.GadgetChannelWriter<TModel>.Destination.get -> Gadgetry.Channels.GadgetChannel<TModel>!
+Gadgetry.Channels.GadgetRuntimeChannel<TModel>
+Gadgetry.Channels.GadgetRuntimeChannel<TModel>.Readers.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Channels.GadgetRuntimeChannelReader<TModel>!>!
+Gadgetry.Channels.GadgetRuntimeChannel<TModel>.Template.get -> Gadgetry.Channels.GadgetChannel<TModel>!
+Gadgetry.Channels.GadgetRuntimeChannel<TModel>.Writers.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>!>!
+Gadgetry.Channels.GadgetRuntimeChannelReader<TModel>
+Gadgetry.Channels.GadgetRuntimeChannelReader<TModel>.Source.get -> Gadgetry.Channels.GadgetRuntimeChannel<TModel>!
+Gadgetry.Channels.GadgetRuntimeChannelReader<TModel>.Template.get -> Gadgetry.Channels.GadgetChannelReader<TModel>!
+Gadgetry.Channels.GadgetRuntimeChannelsFeature
+Gadgetry.Channels.GadgetRuntimeChannelsFeature.GadgetRuntimeChannelsFeature() -> void
+Gadgetry.Channels.GadgetRuntimeChannelsFeature.Readers.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Channels.IGadgetRuntimeChannelReader!>!
+Gadgetry.Channels.GadgetRuntimeChannelsFeature.Writers.get -> System.Collections.Generic.IReadOnlyList<Gadgetry.Channels.IGadgetRuntimeChannelWriter!>!
+Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>
+Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>.CompleteWriting() -> void
+Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>.Destination.get -> Gadgetry.Channels.GadgetRuntimeChannel<TModel>!
+Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>.HasCompletedWriting.get -> bool
+Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>.Template.get -> Gadgetry.Channels.GadgetChannelWriter<TModel>!
+Gadgetry.Channels.GadgetRuntimeExtensions
+Gadgetry.Channels.GadgetRuntimeStateChannelsFeature
+Gadgetry.Channels.GadgetRuntimeStateChannelsFeature.GadgetRuntimeStateChannelsFeature() -> void
+Gadgetry.Channels.GadgetRuntimeStateChannelsFeature.GetOrCreateChannel<TModel>(Gadgetry.Channels.GadgetChannel<TModel>! channel) -> Gadgetry.Channels.GadgetRuntimeChannel<TModel>!
+Gadgetry.Channels.IGadgetBuilderExtensions
+Gadgetry.Channels.IGadgetChannel
+Gadgetry.Channels.IGadgetChannel.Features.get -> Gadgetry.IFeatureCollection<Gadgetry.Channels.IGadgetChannelFeature!>!
+Gadgetry.Channels.IGadgetChannel.Identifier.get -> string!
+Gadgetry.Channels.IGadgetChannelFeature
+Gadgetry.Channels.IGadgetChannelReader
+Gadgetry.Channels.IGadgetChannelReader.Source.get -> Gadgetry.Channels.IGadgetChannel!
+Gadgetry.Channels.IGadgetChannelWriter
+Gadgetry.Channels.IGadgetChannelWriter.Destination.get -> Gadgetry.Channels.IGadgetChannel!
+Gadgetry.Channels.IGadgetRuntimeChannel
+Gadgetry.Channels.IGadgetRuntimeChannel.Readers.get -> System.Collections.Generic.IEnumerable<Gadgetry.Channels.IGadgetRuntimeChannelReader!>!
+Gadgetry.Channels.IGadgetRuntimeChannel.Template.get -> Gadgetry.Channels.IGadgetChannel!
+Gadgetry.Channels.IGadgetRuntimeChannel.Writers.get -> System.Collections.Generic.IEnumerable<Gadgetry.Channels.IGadgetRuntimeChannelWriter!>!
+Gadgetry.Channels.IGadgetRuntimeChannelReader
+Gadgetry.Channels.IGadgetRuntimeChannelReader.Source.get -> Gadgetry.Channels.IGadgetRuntimeChannel!
+Gadgetry.Channels.IGadgetRuntimeChannelReader.Template.get -> Gadgetry.Channels.IGadgetChannelReader!
+Gadgetry.Channels.IGadgetRuntimeChannelWriter
+Gadgetry.Channels.IGadgetRuntimeChannelWriter.CompleteWriting() -> void
+Gadgetry.Channels.IGadgetRuntimeChannelWriter.Destination.get -> Gadgetry.Channels.IGadgetRuntimeChannel!
+Gadgetry.Channels.IGadgetRuntimeChannelWriter.HasCompletedWriting.get -> bool
+Gadgetry.Channels.IGadgetRuntimeChannelWriter.Template.get -> Gadgetry.Channels.IGadgetChannelWriter!
+override Gadgetry.Channels.GadgetChannel<TModel>.ToString() -> string!
+override Gadgetry.Channels.GadgetChannelReader<TModel>.ToString() -> string!
+override Gadgetry.Channels.GadgetChannelWriter<TModel>.ToString() -> string!
+override Gadgetry.Channels.GadgetRuntimeChannel<TModel>.ToString() -> string!
+override Gadgetry.Channels.GadgetRuntimeChannelReader<TModel>.ToString() -> string!
+override Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>.ToString() -> string!
+static Gadgetry.Channels.GadgetChannel.Create<TModel>(string! identifier) -> Gadgetry.Channels.GadgetChannel<TModel>!
+static Gadgetry.Channels.GadgetChannelCapacityBuilderExtensions.UseChannelCapacity<TModel>(this Gadgetry.Channels.GadgetChannel<TModel>! gadgetChannel, int capacity) -> Gadgetry.Channels.GadgetChannel<TModel>!
+static Gadgetry.Channels.GadgetChannelCapacityBuilderExtensions.UseChannelCapacity<TModel>(this Gadgetry.Channels.GadgetChannel<TModel>! gadgetChannel, System.Action<Gadgetry.Channels.GadgetChannelCapacityOptions!>! options) -> Gadgetry.Channels.GadgetChannel<TModel>!
+static Gadgetry.Channels.GadgetRuntimeExtensions.GetReader<TModel>(this Gadgetry.GadgetRuntime! gadgetRuntime, Gadgetry.Channels.GadgetChannelReader<TModel>! channelReader) -> Gadgetry.Channels.GadgetRuntimeChannelReader<TModel>!
+static Gadgetry.Channels.GadgetRuntimeExtensions.GetWriter<TModel>(this Gadgetry.GadgetRuntime! gadgetRuntime, Gadgetry.Channels.GadgetChannelWriter<TModel>! channelWriter) -> Gadgetry.Channels.GadgetRuntimeChannelWriter<TModel>!
+static Gadgetry.Channels.GadgetRuntimeExtensions.OpenReader<TModel>(this Gadgetry.GadgetRuntime! gadgetRuntime, Gadgetry.Channels.GadgetChannelReader<TModel>! channelReader) -> System.Threading.Channels.ChannelReader<TModel>!
+static Gadgetry.Channels.GadgetRuntimeExtensions.OpenWriter<TModel>(this Gadgetry.GadgetRuntime! gadgetRuntime, Gadgetry.Channels.GadgetChannelWriter<TModel>! channelWriter) -> System.Threading.Channels.ChannelWriter<TModel>!
+static Gadgetry.Channels.IGadgetBuilderExtensions.ReadFrom<TModel>(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Channels.GadgetChannel<TModel>! channel) -> Gadgetry.Channels.GadgetChannelReader<TModel>!
+static Gadgetry.Channels.IGadgetBuilderExtensions.ReadFrom<TModel>(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Channels.GadgetChannel<TModel>! channel, out Gadgetry.Channels.GadgetChannelReader<TModel>! writer) -> Gadgetry.IGadgetBuilder!
+static Gadgetry.Channels.IGadgetBuilderExtensions.WriteTo<TModel>(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Channels.GadgetChannel<TModel>! channel) -> Gadgetry.Channels.GadgetChannelWriter<TModel>!
+static Gadgetry.Channels.IGadgetBuilderExtensions.WriteTo<TModel>(this Gadgetry.IGadgetBuilder! gadgetBuilder, Gadgetry.Channels.GadgetChannel<TModel>! channel, out Gadgetry.Channels.GadgetChannelWriter<TModel>! writer) -> Gadgetry.IGadgetBuilder!
