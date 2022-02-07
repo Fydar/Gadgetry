@@ -11,7 +11,7 @@
   <PropertyGroup>
     <Product>Gadgetry.Documentation</Product>
     <PackageId>Gadgetry.Documentation</PackageId>
-    <VersionPrefix>0.0.3</VersionPrefix>
+    <VersionPrefix>0.0.4</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <PackageDescription>Extensions for Gadgetry to support documentation.</PackageDescription>
     <PackageTags>Gadgetry Async</PackageTags>

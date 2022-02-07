@@ -11,7 +11,7 @@
   <PropertyGroup>
     <Product>Gadgetry.Resources</Product>
     <PackageId>Gadgetry.Resources</PackageId>
-    <VersionPrefix>0.0.3</VersionPrefix>
+    <VersionPrefix>0.0.4</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <PackageDescription>Extensions for Gadgetry to support resources.</PackageDescription>
     <PackageTags>Gadgetry Async</PackageTags>
