@@ -1,6 +1,21 @@
 ﻿namespace Gadgetry.Channels;
 
 /// <summary>
+/// Static utilities for interacting with channels for a producer-consumer data model.
+/// </summary>
+public static class GadgetChannel
+{
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetChannel{TModel}"/> class with an associated identifier.
+	/// </summary>
+	/// <param name="identifier">An identifier for this <see cref="IGadgetChannel"/>.</param>
+	public static GadgetChannel<TModel> Create<TModel>(string identifier)
+	{
+		return new GadgetChannel<TModel>(identifier);
+	}
+}
+
+/// <summary>
 /// Represents a hard-typed channel in a producer-consumer data model.
 /// </summary>
 public class GadgetChannel<TModel> : IGadgetChannel
@@ -19,7 +34,7 @@ public class GadgetChannel<TModel> : IGadgetChannel
 	/// Creates a new instance of the <see cref="GadgetChannel{TModel}"/> class with an associated identifier.
 	/// </summary>
 	/// <param name="identifier">An identifier for this <see cref="IGadgetChannel"/>.</param>
-	public GadgetChannel(string identifier)
+	internal GadgetChannel(string identifier)
 	{
 		Identifier = identifier;
 	}

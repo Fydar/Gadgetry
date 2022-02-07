@@ -20,4 +20,11 @@ public class GadgetRuntimeChannelsFeature : IGadgetRuntimeFeature
 	/// A collection of all <see cref="IGadgetRuntimeChannelReader"/> associated with the <see cref="GadgetRuntime"/>.
 	/// </summary>
 	public IReadOnlyList<IGadgetRuntimeChannelReader> Readers => readers;
+
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetRuntimeChannelsFeature"/> class.
+	/// </summary>
+	public GadgetRuntimeChannelsFeature()
+	{
+	}
 }

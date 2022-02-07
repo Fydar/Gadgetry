@@ -15,4 +15,8 @@ public sealed class GadgetRuntimeWorkerGroup
 	/// A collection of all worker <see cref="GadgetRuntime"/> associated with the <see cref="GadgetRuntimeWorkerGroup"/>.
 	/// </summary>
 	public IReadOnlyList<GadgetRuntime> Workers => workers;
+
+	internal GadgetRuntimeWorkerGroup()
+	{
+	}
 }

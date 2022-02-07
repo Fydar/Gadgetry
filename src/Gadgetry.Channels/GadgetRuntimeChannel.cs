@@ -7,7 +7,7 @@ namespace Gadgetry.Channels;
 /// <summary>
 /// Represents a runtime channel in a producer-consumer data model.
 /// </summary>
-	public class GadgetRuntimeChannel<TModel> : IGadgetRuntimeChannel
+public class GadgetRuntimeChannel<TModel> : IGadgetRuntimeChannel
 {
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] internal readonly List<GadgetRuntimeChannelWriter<TModel>> writers = new();
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] internal readonly List<GadgetRuntimeChannelReader<TModel>> readers = new();
@@ -21,17 +21,17 @@ namespace Gadgetry.Channels;
 	/// <summary>
 	/// A collection of all <see cref="GadgetRuntimeChannelWriter{TModel}"/> that are writing to this <see cref="GadgetRuntimeChannel{TModel}"/>.
 	/// </summary>
-	public IEnumerable<GadgetRuntimeChannelWriter<TModel>> Writers => writers;
+	public IReadOnlyList<GadgetRuntimeChannelWriter<TModel>> Writers => writers;
 
 	/// <summary>
 	/// A collection of all <see cref="GadgetRuntimeChannelReader{TModel}"/> that are reading from this <see cref="GadgetRuntimeChannel{TModel}"/>.
 	/// </summary>
-	public IEnumerable<GadgetRuntimeChannelReader<TModel>> Readers => readers;
+	public IReadOnlyList<GadgetRuntimeChannelReader<TModel>> Readers => readers;
 
 	/// <summary>
 	/// The raw channel wrapped by this <see cref="GadgetRuntimeChannelReader{TModel}"/>.
 	/// </summary>
-	public Channel<TModel> InnerChannel { get; }
+	internal Channel<TModel> InnerChannel { get; }
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] IGadgetChannel IGadgetRuntimeChannel.Template => Template;
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)] IEnumerable<IGadgetRuntimeChannelWriter> IGadgetRuntimeChannel.Writers => writers;

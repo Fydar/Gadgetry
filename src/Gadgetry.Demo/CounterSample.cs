@@ -76,7 +76,7 @@ public static class CounterSample
 		int countTo,
 		out GadgetChannel<int> numbersChannel)
 	{
-		numbersChannel = new GadgetChannel<int>("numbers")
+		numbersChannel = GadgetChannel.Create<int>("numbers")
 			.UseDocumentation(options =>
 			{
 				options.DisplayName = "Numbers";
@@ -113,7 +113,7 @@ public static class CounterSample
 		GadgetChannel<int> inputChannel,
 		out GadgetChannel<int> outputChannel)
 	{
-		outputChannel = new GadgetChannel<int>("added-numbers")
+		outputChannel = GadgetChannel.Create<int>("added-numbers")
 			.UseDocumentation(options =>
 			{
 				options.DisplayName = "Added Numbers";

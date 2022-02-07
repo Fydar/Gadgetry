@@ -19,4 +19,11 @@ public class GadgetDocumentationOptions
 	/// A string identifier for an icon to use for the <see cref="Gadget"/>.
 	/// </summary>
 	public string Icon { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetDocumentationOptions"/> class.
+	/// </summary>
+	internal GadgetDocumentationOptions()
+	{
+	}
 }

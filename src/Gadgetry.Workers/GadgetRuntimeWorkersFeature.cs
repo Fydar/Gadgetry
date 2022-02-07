@@ -15,4 +15,11 @@ public sealed class GadgetRuntimeWorkersFeature : IGadgetRuntimeFeature
 	/// A collection of all worker groups associated with the <see cref="GadgetRuntime"/>.
 	/// </summary>
 	public IReadOnlyList<GadgetRuntimeWorkerGroup> WorkerGroups => workerGroups;
+
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetRuntimeWorkersFeature"/> class.
+	/// </summary>
+	public GadgetRuntimeWorkersFeature()
+	{
+	}
 }
