@@ -1,0 +1,27 @@
+version: 2
+
+registries:
+  nuget-github:
+    type: nuget-feed
+    url: https://nuget.pkg.github.com/Fydar/index.json
+    token: ${{secrets.DEPENDABOT_TOKEN}}
+  nuget-org:
+    type: nuget-feed
+    url: https://api.nuget.org/v3/index.json
+
+updates:
+  - package-ecosystem: nuget
+    directory: "/src/"
+    registries:
+      - nuget-github
+      - nuget-org
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    commit-message:
+      prefix: "📦"
+      prefix-development: "📦"
+      include: "scope"
+    assignees:
+      - "Fydar"
