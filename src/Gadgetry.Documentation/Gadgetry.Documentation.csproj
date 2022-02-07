@@ -14,6 +14,7 @@
     <VersionPrefix>0.0.3</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <PackageDescription>Extensions for Gadgetry to support documentation.</PackageDescription>
+    <PackageTags>Gadgetry Async</PackageTags>
     <RepositoryUrl>https://github.com/Fydar/Gadgetry</RepositoryUrl>
   </PropertyGroup>
 
@@ -31,8 +32,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gadgetry\Gadgetry.csproj" />
-    <ProjectReference Include="..\Gadgetry.Steps\Gadgetry.Steps.csproj" />
-    <ProjectReference Include="..\Gadgetry.Workers\Gadgetry.Workers.csproj" />
     <ProjectReference Include="..\Gadgetry.Channels\Gadgetry.Channels.csproj" />
   </ItemGroup>
 
