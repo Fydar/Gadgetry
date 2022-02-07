@@ -8,7 +8,7 @@ public class GadgetTask
 	/// <summary>
 	/// The callback associated with this <see cref="GadgetTask"/> that is invoked during the <see cref="GadgetRuntime"/> execution.
 	/// </summary>
-	public GadgetTaskCallbackAsync TaskCallback { get; }
+	internal GadgetTaskCallbackAsync TaskCallback { get; }
 
 	internal GadgetTask(GadgetTaskCallbackAsync taskCallback)
 	{

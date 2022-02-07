@@ -37,4 +37,11 @@ public class GadgetRuntimeStateChannelsFeature : IGadgetRuntimeStateFeature
 		mutex.ReleaseMutex();
 		return newRuntimeChannel;
 	}
+
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetRuntimeStateChannelsFeature"/> class.
+	/// </summary>
+	public GadgetRuntimeStateChannelsFeature()
+	{
+	}
 }

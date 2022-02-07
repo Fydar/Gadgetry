@@ -16,4 +16,11 @@ public class GadgetChannelCapacityOptions
 	/// Specifies the behavior to use when writing to a bounded channel that is already full.
 	/// </summary>
 	public BoundedChannelFullMode FullMode { get; set; } = BoundedChannelFullMode.Wait;
+
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetChannelCapacityOptions"/> class.
+	/// </summary>
+	public GadgetChannelCapacityOptions()
+	{
+	}
 }

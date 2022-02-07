@@ -21,4 +21,11 @@ public class GadgetChannelDocumentationOptions
 	/// A string identifier for an icon to use for the <see cref="IGadgetChannel"/>.
 	/// </summary>
 	public string Icon { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetChannelDocumentationOptions"/> class.
+	/// </summary>
+	internal GadgetChannelDocumentationOptions()
+	{
+	}
 }

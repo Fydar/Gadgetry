@@ -31,12 +31,12 @@ public class GadgetRuntime
 	/// <summary>
 	/// The time that this <see cref="GadgetRuntime"/>. <c>null</c> if it hasn't been executed yet.
 	/// </summary>
-	public DateTimeOffset? StartTime { get; set; }
+	public DateTimeOffset? StartTime { get; private set; }
 
 	/// <summary>
 	/// The time that this step completed. <c>null</c> if it hasn't completed yet.
 	/// </summary>
-	public DateTimeOffset? EndTime { get; set; }
+	public DateTimeOffset? EndTime { get; private set; }
 
 	/// <summary>
 	/// The duration that this gadget has been running. If this step hasn't started, returns <see cref="TimeSpan.Zero"/>.

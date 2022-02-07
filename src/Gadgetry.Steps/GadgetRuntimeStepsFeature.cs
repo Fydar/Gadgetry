@@ -15,4 +15,11 @@ public sealed class GadgetRuntimeStepsFeature : IGadgetRuntimeFeature
 	/// All <b>steps</b> associated with the <see cref="GadgetRuntime"/>.
 	/// </summary>
 	public IReadOnlyList<GadgetRuntime> Steps => steps;
+
+	/// <summary>
+	/// Creates a new instance of the <see cref="GadgetRuntimeStepsFeature"/> class.
+	/// </summary>
+	public GadgetRuntimeStepsFeature()
+	{
+	}
 }

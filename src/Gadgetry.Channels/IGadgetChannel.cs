@@ -11,7 +11,7 @@ public interface IGadgetChannel
 	string Identifier { get; }
 
 	/// <summary>
-	/// A collection of all <see cref="IGadgetChannelFeature"/> features associated with this <see cref="GadgetChannel{TModel}"/>.
+	/// A collection of all <see cref="IGadgetChannelFeature"/> features associated with this <see cref="IGadgetChannel"/>.
 	/// </summary>
 	IFeatureCollection<IGadgetChannelFeature> Features { get; }
 }
